@@ -16,8 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url
-from .staticView import myResource,roomclass
+from .staticView import myResource,roomclass,borrowableTable
 urlpatterns = [
     url(r'^$',myResource),
     url(r'^roomclass$', roomclass),
+    url(r'^borrableTable$', borrowableTable),
 ]

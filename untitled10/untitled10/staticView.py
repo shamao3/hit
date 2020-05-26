@@ -4,3 +4,5 @@ def myResource(request):
     return render(request,"./reserve_record.html");
 def roomclass(request):
     return render(request,"./room_select.html");
+def borrowableTable(request):
+    return render(request,"./resource_borrowable.html");
