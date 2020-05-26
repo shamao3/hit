@@ -97,6 +97,74 @@
   	display: block;
   	margin-bottom:5px;
   }
+/**人事管理**/
+	.person-mang{
+	width:300px;
+	background: #1dbaf0;
+	top:0;
+	left:250px;
+	}
+	.person-mang div{
+		width: 180px;
+		position: absolute;
+		top: 180px;
+		text-align: center;
+	}
+	.person-mang span{
+		display: block;
+		margin-bottom: 5px;
+	}
+	/**信息查看**/
+.person-view{
+	width: 300px;
+	background: #1dbaf0;
+	top: 0;
+	left: 574px;
+}
+.person-view div{
+	width: 180px;
+	position: absolute;
+	top: 180px;
+	text-align: center;
+}
+.person-view span{
+	display: block;
+	margin-bottom: 5px;
+}
+	/**注销账号**/
+.person-del{
+	width: 300px;
+	background:red;
+	top: 0;
+	left: 250px;
+}
+.person-del div{
+	width: 180px;
+	position: absolute;
+	top: 180px;
+	text-align: center;
+}
+.person-del span{
+	display: block;
+	margin-bottom: 5px;
+}
+/**添加账户**/
+	.person-add{
+		width: 300px;
+		background: #1dbaf0;
+		top: 0;
+		left: 574px;
+	}
+	.person-add div{
+		width: 180px;
+		position: absolute;
+		top: 180px;
+		text-align: center;
+	}
+	.person-add span{
+		display: block;
+		margin-bottom: 5px;
+	}
 
    /**座位预约seat-select样式**/
    .seat-select{
