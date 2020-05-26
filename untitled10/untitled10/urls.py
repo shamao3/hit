@@ -16,9 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url
+from .staticView import myResource, personal_center, notice, myApplication
+
 from .staticView import myResource,roomclass,manage,adddel
 urlpatterns = [
-    url(r'^myresource$',myResource),
+    url(r'^$',myResource),
+    url(r'^personal_center$',personal_center),
+    url(r'^notice$',notice),
+    url(r'^my_application$',myApplication),
     url(r'^roomclass$', roomclass),
     url(r'^manage$', manage),
     url(r'^adddel$', adddel),
