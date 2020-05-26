@@ -1,114 +1,150 @@
-<!DOCTYPE html>
+<!DOCTYPE html><!--这是个人中心主界面，包含两个按钮,主界面点击个人中心跳转到此界面-->
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">  <!-- 以上代码告诉IE浏览器，IE8/9及以后的版本都会以最高版本IE来渲染页面。 -->  
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">  <!-- 以上代码告诉IE浏览器，IE8/9及以后的版本都会以最高版本IE来渲染页面。 -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>公告栏</title>
+	<title>华师计算机实验室预约系统</title>
 	<link rel="stylesheet" href="../static/css/normalize.css">
 	<link rel="stylesheet" href="../static/css/common.css">
-	<link rel="stylesheet" href="../static/css/notice.css">
+	<link rel="stylesheet" href="../static/css/main.css">
 </head>
 <body>
-	<!--[if lte IE8]>
-	<p class="browserupdate">您的浏览器版本太老，请到<a href="http://browsehappy.com">这里</a>更新，以获取最佳的浏览体验。</p>
-	<![endif]-->
-	<header>
-		<div class="logo">
-			<img src="../static/images/logo1.png" alt="华中师范大学logo" class="logo-img vertical-center">
-			<h1 class="vertical-center">计算机实验室预约管理系统</h1>
-		</div>
-		<div class="logoff">
-			<a href="#"><span><em class="username">蒲东齐</em>（<em class="usernum">2015210817</em>）</span></a>
-			<a href="login.html" id="logout"><img src="../static/images/out.png" alt="注销登录"></a>
-		</div>
-	</header><!-- header结束 -->
-	<div class="container">
-		<nav class="nav-list">
-			<a href="index.html" class="nav-item" id="nav-item1">
-				<span class="iconfont">&#xe63e;</span>
-				<span class="item-info">主页</span>
-			</a>
-			<a href="room_select.html" class="nav-item" id="nav-item2">
-				<span class="iconfont">&#xe604;</span>
-				<span class="item-info">预约实验室</span>
-			</a>
-			<a href="room_register.html" class="nav-item" id="nav-item3">
-				<span class="iconfont">&#xe601;</span>
-				<span class="item-info">联系管理员</span>
-			</a>
-			<a href="cancel_reserve.html" class="nav-item" id="nav-item4">
-				<span class="iconfont">&#xe64a;</span>
-				<span class="item-info">取消预约</span>
-			</a>
-			<a href="romm_release.html" class="nav-item" id="nav-item5">
-				<span class="iconfont">&#xe751;</span>
-				<span class="item-info">可借教室</span>
-			</a>
-			<a href="reserve_record.html" class="nav-item" id="nav-item6">
-				<span class="iconfont">&#xe610;</span>
-				<span class="item-info">释放教室</span>
-			</a>
-			<a href="default_record.html" class="nav-item" id="nav-item7">
-				<span class="iconfont">&#xe65f;</span>
-				<span class="item-info">超时使用记录</span>
-			</a>
-			<a href="notice.html" class="nav-item" id="nav-item8">
-				<span class="iconfont">&#xe600;</span>
-				<span class="item-info">公告栏</span>
-			</a>
-			<span class="triangle"></span>
-		</nav>
-		<div class="notice-content">
-			<div id="content1">
-				<a href="">
-					<span class="notice-title vertical-center">计算机学院实验室暂停开放通知</span>
-					<span class="notice-date vertical-center">2017/11/27</span>
-				</a>
-				<a href="">
-					<span class="notice-title vertical-center">计算机学院实验室暂停开放通知</span>
-					<span class="notice-date vertical-center">2017/11/17</span>
-				</a>
-				<a href="">
-					<span class="notice-title vertical-center">计算机学院实验室暂停开放通知</span>
-					<span class="notice-date vertical-center">2017/10/10</span>
-				</a>
-				<a href="">
-					<span class="notice-title vertical-center">计算机学院实验室暂停开放通知</span>
-					<span class="notice-date vertical-center">2017/09/25</span>
-				</a>
-				<a href="">
-					<span class="notice-title vertical-center">计算机学院实验室暂停开放通知</span>
-					<span class="notice-date vertical-center">2017/09/5</span>
-				</a>
-				<a href="">
-					<span class="notice-title vertical-center">计算机学院实验室暂停开放通知</span>
-					<span class="notice-date vertical-center">2017/06/7</span>
-				</a>
-				<a href="">
-					<span class="notice-title vertical-center">计算机学院实验室暂停开放通知</span>
-					<span class="notice-date vertical-center">2017/11/10</span>
-				</a>
-				<a href="">
-					<span class="notice-title vertical-center">计算机学院实验室暂停开放通知</span>
-					<span class="notice-date vertical-center">2017/07/14</span>
-				</a>
-			</div>
-			<div id="content2">
-				<a href="">
-					<span class="notice-title vertical-center">计算机学院实验室暂停开放通知</span>
-					<span class="notice-date vertical-center">2017/06/26</span>
-				</a>
-
-			</div>
-			<div class="page-select">
-				<div class="page selected" id="page1">1</div>
-				<div class="page" id="page2">2</div>
-			</div>
-		</div>
+<!--[if lte IE8]>
+<p class="browserupdate">您的浏览器版本太老，请到<a href="http://browsehappy.com">这里</a>更新，以获取最佳的浏览体验。</p>
+<![endif]-->
+<header>
+	<div class="logo">
+		<img src="../static/images/logo1.png" alt="华中师范大学logo" class="logo-img vertical-center">
+		<h1 class="vertical-center">计算机实验室预约管理系统</h1>
 	</div>
-	<script type="text/javascript" src="../static/script/jquery-3.1.1.min.js"></script>
-	<script type="text/javascript" src="../static/script/common.js"></script>
-	<script type="text/javascript" src="../static/script/notice.js"></script>
+	<div class="logoff">
+		<a href="#"><span><em class="username">{{蒲东齐}}<!--姓名--></em>（<em class="usernum">2015210817</em>）</span></a>
+		<a href="login.html" id="logout"><img src="../static/images/out.png" alt="注销登录"></a>
+	</div>
+</header><!-- header结束 -->
+<div class="container" style="margin:20px auto;">
+	<nav class="nav-list">
+		<a href="index.html" class="nav-item" id="nav-item1">
+			<span class="iconfont">&#xe63e;</span>
+			<span class="item-info">主页</span>
+		</a>
+		<a href="room_select.html" class="nav-item" id="nav-item2">
+			<span class="iconfont">&#xe604;</span>
+			<span class="item-info">预约实验室</span>
+		</a>
+		<a href="room_register.html" class="nav-item" id="nav-item3">
+			<span class="iconfont">&#xe601;</span>
+			<span class="item-info">联系管理员</span>
+		</a>
+		<a href="cancel_reserve.html" class="nav-item" id="nav-item4">
+			<span class="iconfont">&#xe64a;</span>
+			<span class="item-info">取消预约</span>
+		</a>
+		<a href="room_release.html" class="nav-item" id="nav-item5">
+			<span class="iconfont">&#xe751;</span>
+			<span class="item-info">可借教室</span>
+		</a>
+		<a href="reserve_record.html" class="nav-item" id="nav-item6">
+			<span class="iconfont">&#xe610;</span>
+			<span class="item-info">释放教室</span>
+		</a>
+		<a href="default_record.html" class="nav-item" id="nav-item7">
+			<span class="iconfont">&#xe65f;</span>
+			<span class="item-info" >超时使用记录</span>
+		</a>
+		<a href="notice.html" class="nav-item" id="nav-item8">
+			<span class="iconfont">&#xe600;</span>
+			<span class="item-info"style="display: none;">公告栏</span>
+		</a>
+		<span class="triangle" style="left: 995px;"></span>
+	</nav>
+	<div class="button-container">
+		<section class="my-application">
+			<img src="../static/images/search.png" alt="我的申请" class="horizontal-center">
+			<span class="horizontal-center">我的申请</span>
+			<a href="{{我的申请.html}}"></a><!--此处填我的申请页面的html-->
+		</section>
+		<section class="my-resource">
+			<img src="../static/images/date%20.png" alt="我的资源" class="horizontal-center">
+			<span class="horizontal-center">我的资源</span>
+			<a href="{{我的资源.html}}"></a><!--此处填我的资源页面html-->
+		</section>
+		<section class="other">
+			<img src="../static/images/books1.png" alt="其他" class="horizontal-center">
+			<span class="horizontal-center">其他</span>
+			<a href="{{其他.html}}"></a><!--此处填其他页面html-->
+		</section>
+	</div>
+</div>
+
 </body>
 </html>
+<style>
+	.button-container{
+		width:1400px;
+		height: 0;
+		position: relative;
+		margin:10px auto 10px;
+	}
+
+	.button-container section{
+		position: absolute;
+	}
+
+	.button-container section span,
+	.button-container section h3,
+	.button-container section p{
+		font-size:1.7rem;
+		color:#fff;
+	}
+	.my-application{
+		width: 357px;
+		background: rgba(240,148,231,1);
+		top:50px;
+		left:0;
+		border:2px solid darkslategray;
+		border-radius:30px;
+	}
+	.my-application span{
+		position: absolute;
+		top:180px;
+	}
+	.my-application a{
+		width: 200px;
+	}
+	.my-resource{
+		width: 357px;
+		background: rgba(172,208,102,1);
+		top:50px;
+		right:680px;
+		border:2px solid darkslategray;
+		border-radius:30px;
+	}
+	.my-resource span{
+		position: absolute;
+		top:180px;
+	}
+	.my-resource a{
+		width: 200px;
+	}
+	.other{
+		width: 357px;
+		background: rgba(224,98,169,1);
+		top:50px;
+		right:320px;
+		border:2px solid darkslategray;
+		border-radius:30px;
+	}
+	.other img{
+		position: absolute;
+		top: 100px;
+	}
+	.other span{
+		position: absolute;
+		top:180px;
+	}
+	.other a{
+		width: 200px;
+	}
+</style>

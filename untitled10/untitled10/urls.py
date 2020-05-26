@@ -16,7 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url
-from .staticView import myResource
+from .staticView import myResource, personal_center, notice, myApplication
+
 urlpatterns = [
     url(r'^$',myResource),
+    url(r'^personal_center$',personal_center),
+    url(r'^notice$',notice),
+    url(r'^my_application$',myApplication),
 ]
