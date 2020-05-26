@@ -18,7 +18,7 @@ from django.urls import path
 from django.conf.urls import url
 from .staticView import myResource,roomclass,manage,adddel
 urlpatterns = [
-    url(r'^$',myResource),
+    url(r'^myresource$',myResource),
     url(r'^roomclass$', roomclass),
     url(r'^manage$', manage),
     url(r'^adddel$', adddel),
