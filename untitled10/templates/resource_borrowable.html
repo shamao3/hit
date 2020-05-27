@@ -9,6 +9,8 @@
 	<link rel="stylesheet" href="../static/css/normalize.css">
 	<link rel="stylesheet" href="../static/css/common.css">
 	<link rel="stylesheet" type="text/css" href="../static/css/room_operate.css">
+
+    <link rel="stylesheet" href="../static/css/style2.css">
 </head>
 <body>
 	<header>
@@ -21,6 +23,7 @@
 			<a href="login.html" id="logout"><img src="../static/images/out.png" alt="注销登录"></a>
 		</div>
 	</header><!-- header结束 -->
+
 	<div class="container" style="margin:20px auto">
 		<nav class="nav-list">
 			<a href="index.html" class="nav-item" id="nav-item1">
@@ -57,6 +60,16 @@
 			</a>
 			<span class="triangle" style="left:727px;"></span>
 		</nav>
+
+
+		<div class="search-box" >
+			<label ><b>输入搜索关键词：</b></label>
+        <input type="text" placeholder=" " /><span></span>
+    </div>
+
+
+
+
 		<div class="reserve-content">
 			<table id="reserve_record">
 				<tbody>
@@ -136,5 +149,6 @@
 	</div>
 	<script type="text/javascript" src="../static/script/jquery-3.1.1.min.js"></script>
 	<script type="text/javascript" src="../static/script/common.js"></script>
+	<script src="../static/script/searching.js"></script>
 </body>
 </html>
