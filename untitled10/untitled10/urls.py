@@ -16,10 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url
-from .staticView import myResource,roomclass,manage,adddel
+from .staticView import myResource,roomclass,manage,adddel,index,borrowableTable
 urlpatterns = [
-    url(r'^$',myResource),
+    url(r'^$',index),
+    url(r'^myresource$',myResource),
     url(r'^roomclass$', roomclass),
     url(r'^manage$', manage),
     url(r'^adddel$', adddel),
+    url(r'^borrowable$', borrowableTable),
+
 ]

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">  <!-- 以上代码告诉IE浏览器，IE8/9及以后的版本都会以最高版本IE来渲染页面。 -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>哈工大资源预约系统</title>
+	<link rel="stylesheet" href="../static/css/normalize.css">
+	<link rel="stylesheet" href="../static/css/common.css">
+	<link rel="stylesheet" href="../static/css/main.css">
+</head>
+
+<body>
+	<!--[if lte IE8]>
+	<p class="browserupdate">您的浏览器版本太老，请到<a href="http://browsehappy.com">这里</a>更新，以获取最佳的浏览体验。</p>
+	<![endif]-->
+	<header>
+		<div class="logo">
+			<img src="../static/images/HITWlogo.jpg" alt="哈尔滨工业大学威海logo" class="logo-img vertical-center"/>
+			<h1 class="vertical-center">哈工大资源预约系统</h1>
+		</div>
+		<div class="logoff">
+			<a href="#"><span><em class="username">{{username}}</em>（<em class="usernum">{{userID}}</em>）</span></a>
+			<a href="/roomclass" id="logout"><img src="../static/images/out.png" alt="注销登录"></a>
+		</div>
+	</header><!-- header结束 -->
+	<div>
+		<div class="w3ls-form">
+				<form action="/" method="post" >
+					<label>课室号</label>
+					<input type="text" name="roomname" placeholder="roomname" required/>
+					<label>申请开始时间</label>
+					<input type="date" id="beginDate" name="beginDate" placeholder="beginDate" onblur="getmin()" required/>
+					<input type="time" id="beginTime" name="beginTime" placeholder="beginTime" onblur="getmin()"  required/>
+					<label>申请结束事件</label>
+					<input type="date" id="endDate" name="endDate" placeholder="endDate" onfocus="getmin()" required/>
+					<input type="time" id="endTime" name="endTime" placeholder="endTime" onfocus="notOnSameDay()" required/>
+					<input type="submit" value="立刻申请！"/>
+				</form>
+		</div>
+    </div>
+	<script type="text/javascript" src="../static/script/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="../../static/script/main.js"></script>
+<script>
+	function getmin(){
+		var begindate=$("#beginDate").val();
+		var begintime=$("#beginTime").val();
+		$("#endDate").attr({
+			"min": begindate,
+		})
+		$("#endDate").val(begindate);
+		$("#endTime").attr({
+			"min": begintime,
+		})
+		$("#endTime").val(begintime);
+
+	};
+
+	function notOnSameDay(){
+		var begindate=$("#beginDate").val();
+		var enddate=$("#endDate").val();
+		if(begindate!=enddate){
+			$("#endTime").attr({
+				"min": null,
+			})
+		}
+	};
+
+	   $(function () {
+       //创建一个当前日期对象
+       var now = new Date();
+       var hour = now.getHours()+1;
+       var minute="00";
+       //格式化日，如果小于9，前面补0
+       var day = ("0" + now.getDate()).slice(-2);
+       //格式化月，如果小于9，前面补0
+       var month = ("0" + (now.getMonth() + 1)).slice(-2);
+       //拼装完整日期格式
+       var today = now.getFullYear() + "-" + (month) + "-" + (day);
+       var nowtime = hour+":"+ minute;
+       //完成赋值
+
+
+       $("#beginDate").attr({"min":today});
+       $("#endDate").attr({"min":today});
+       $("#beginTime").attr({"min":nowtime});
+       $("#endTime").attr({"min":nowtime});
+
+
+       $("#beginDate").val(today);
+       $("#endDate").val(today);
+       $("#beginTime").val(nowtime);
+       $("#endTime").val(nowtime);
+   })
+
+
+</script>
+</body>
+</html>
