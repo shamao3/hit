@@ -32,17 +32,45 @@
 					<input type="text" name="name" placeholder="Username" required/>
 					<label>密码</label>
 					<input type="text" name="password" placeholder="Password" required />
-					<label>开始日期</label>
-					<input type="date" value="2015-09-24" required/>
-					<label>结束日期</label>
-					<input type="date" value="2015-09-24" required/>
+					<label>申请开始时间</label>
+					<input type="date" id="startDate" name="stratDate" placeholder="stratDate" onblur="getDate()" required/>
+					<label>申请结束时间</label>
+					<input type="date" id="endDate" name="endDate" placeholder="endDate" onfocus="getDate()" required/>
 					<input type="submit" value="添加" />
 				</form>
 			</div>
 		</div>
-		<br>
-		<div class="copyright">
 	</div>
-	</div>
+	<script type="text/javascript" src="../static/script/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="../../static/script/main.js"></script>
+<script>
+	function getDate(){
+		var startdate=$("#startDate").val();
+		$("#endDate").attr({
+			"min": startdate,
+		})
+		$("#endDate").val(startdate);
+	};
+
+
+	   $(function () {//main,z
+       //创建一个当前日期对象
+       var now = new Date();
+       //格式化日，如果小于9，前面补0
+       var day = ("0" + now.getDate()).slice(-2);
+       //格式化月，如果小于9，前面补0
+       var month = ("0" + (now.getMonth() + 1)).slice(-2);
+       //拼装完整日期格式
+       var today = now.getFullYear() + "-" + (month) + "-" + (day);
+       //完成赋值
+       $("#startDate").attr({"min":today});
+       $("#endDate").attr({"min":today});
+
+       $("#startDate").val(today);
+       $("#endDate").val(today);
+   })
+
+
+</script>
 </body>
 </html>
