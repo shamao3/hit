@@ -479,3 +479,24 @@
 	margin-left:25px;
 	margin-top:10px;
 }
+
+/*root管理入口样式*/
+.entry-board{
+   	width:50px;
+	height:40px;
+   	background: rgba(172,208,102,1);
+
+   }
+   .entry-board img{
+   	left:40px;
+   }
+   .entry-board .entry-info{
+   	left:140px;
+   }
+   .entry-board a{
+   	width:50px;
+   }
+
+   .newbutton{font-family:"Arial", "Tahoma", "微软雅黑", "雅黑";border:0;
+	   width: 150px; height: 50px;
+vertical-align:middle;font-size:18px}

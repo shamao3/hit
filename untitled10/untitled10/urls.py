@@ -16,13 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url
-from .staticView import myResource,roomclass,manage,adddel,index,borrowableTable
+from .staticView import myResource,roomclass,manage,adddel,index,borrowableTable,fillTable
 urlpatterns = [
     url(r'^$',index),
-    url(r'^myresource$',myResource),
-    url(r'^roomclass$', roomclass),
-    url(r'^manage$', manage),
-    url(r'^adddel$', adddel),
-    url(r'^borrowable$', borrowableTable),
+    url(r'^index$',index),
+    url(r'^myresource$',myResource),#资源管理
+    url(r'^roomclass$', roomclass),#查询可借资源的选择分类
+    url(r'^manage$', manage),#个人中心
+    url(r'^adddel$', adddel),#人事管理
+    url(r'^borrowable$', borrowableTable), #预约填表
+    url(r'^filltable$', fillTable),
 
 ]

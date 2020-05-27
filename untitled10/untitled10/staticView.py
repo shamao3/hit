@@ -1,7 +1,7 @@
 from django.shortcuts import render,HttpResponse
 
 def myResource(request):
-    return render(request,"./reserve_record.html");
+    return render(request,"./resource_management.html");
 def personal_center(request):
     return render(request,"./personal_center.html");
 def notice(request):
@@ -18,4 +18,6 @@ def borrowableTable(request):
     return render(request,"./resource_borrowable.html");
 def index(request):
     return render(request,"./index.html");
+def fillTable(request):
+    return render(request,"./booking_table.html");
 
