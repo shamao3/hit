@@ -16,3 +16,6 @@ def adddel(request):
     return render(request,"./person_adddel.html");
 def borrowableTable(request):
     return render(request,"./resource_borrowable.html");
+def index(request):
+    return render(request,"./index.html");
+
