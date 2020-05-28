@@ -20,4 +20,5 @@ def index(request):
     return render(request,"./index.html");
 def fillTable(request):
     return render(request,"./booking_table.html");
-
+def login(request):
+    return render(request,"./login.html");
