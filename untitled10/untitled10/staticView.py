@@ -12,6 +12,10 @@ def roomclass(request):
     return render(request,"./roomclass_select.html");
 def manage(request):
     return render(request,"./person_management.html");
+def add(request):
+    return render(request,"./person_add.html");
+def dell(request):
+    return render(request,"./person_del.html");
 def adddel(request):
     return render(request,"./person_adddel.html");
 def borrowableTable(request):
