@@ -59,9 +59,10 @@
 			<span class="triangle" style="left:727px;"></span>
 		</nav>
 		<div class="reserve-content">
-
+			<button onclick="swapCheck()">全选</button>
 			<table id="reserve_record">
-				<tbody>
+
+				<tbody id="tbody">
 					<tr>
 						<th>编号</th>
 						<th>资源名字</th>
@@ -73,19 +74,19 @@
 						<td>1</td>
 						<td>M101</td>
 						<td>可借用</td>
-						<td><input type="checkbox" name="shift" value="shift" checked="checked"></td>
+						<td><input type="checkbox" name="shift" value="shift" ></td>
 					</tr>
 				<tr>
 						<td>2</td>
 						<td>M102</td>
 						<td>不可借用</td>
-						<td><input type="checkbox" name="shift" value="shift" checked="checked"></td>
+						<td><input type="checkbox" name="shift" value="shift" ></td>
 					</tr>
 				<tr>
 						<td>3</td>
 						<td>M103</td>
 						<td>可借用</td>
-						<td><input type="checkbox" name="shift" value="shift" checked="checked"></td>
+						<td><input type="checkbox" name="shift" value="shift" ></td>
 					</tr>
 				</tbody>
 			</table>
@@ -93,13 +94,34 @@
 				<div class="page selected" id="page1">1</div>
 				<div class="page" id="page2">2</div>
 			</div>
-		<input type="button" class="newbutton" value="增加/删除资源"/>
+
+
+			<!--根用户才有的权限-->
+			<button value="添加/删除资源" class="newbutton">添加/删除资源</button>
 
 		</div>
 
 	</div>
 	<script type="text/javascript" src="../static/script/jquery-3.1.1.min.js"></script>
 	<script type="text/javascript" src="../static/script/common.js"></script>
+
+	<script type="text/javascript">
+		//checkbox 全选/取消全选
+		var isCheckAll = false;
+		function swapCheck() {
+			if (isCheckAll) {
+				$("input[type='checkbox']").each(function() {
+					this.checked = false;
+				});
+				isCheckAll = false;
+			} else {
+				$("input[type='checkbox']").each(function() {
+					this.checked = true;
+				});
+				isCheckAll = true;
+			}
+		}
+	</script>
 </body>
 </html>
 <!--梁逸聪，资源管理-->
