@@ -29,4 +29,7 @@ urlpatterns = [
     url(r'^login$', login),#登录
     url(r'^cancel$', cancel_reserve),#取消预约
     url(r'^detail$', detail),#预约详情
+    url(r'^notice$', notice),#通知主页面
+    url(r'^personal_center$', personal_center),#个人中心主页面
+    url(r'^my_application$', myApplication),#我的申请
 ]
