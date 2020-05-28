@@ -27,4 +27,6 @@ urlpatterns = [
     url(r'^borrowable$', borrowableTable), #预约填表
     url(r'^filltable$', fillTable),
     url(r'^login$', login),#登录
+    url(r'^cancel$', cancel_reserve),#取消预约
+    url(r'^detail$', detail),#预约详情
 ]

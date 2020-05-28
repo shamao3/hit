@@ -22,3 +22,7 @@ def fillTable(request):
     return render(request,"./booking_table.html");
 def login(request):
     return render(request,"./login.html");
+def cancel_reserver(request):
+    return render(request, "./cancel_reserve.html");
+def detail(request):
+    return render(request, "./detail.html");
