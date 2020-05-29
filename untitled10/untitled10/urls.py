@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url
-from .staticView import myResource,roomclass,manage,adddel,index,borrowableTable,fillTable,login,add,dell,cancel_reserver,detail,notice,personal_center,myApplication,personal_information
+from .staticView import myResource,roomclass,manage,adddel,index,borrowableTable,fillTable,login,add,dell,cancel_reserver,detail,notice,personal_center,myApplication,personal_information,my_resource
 urlpatterns = [
     url(r'^$',index),
     url(r'^index$',index),
@@ -35,4 +35,6 @@ urlpatterns = [
     url(r'^personal_center$', personal_center),#个人中心主页面
     url(r'^my_application$', myApplication),#我的申请
     url(r'^personal_information$', personal_information),#信息查看
+    url(r'^my_resource$', my_resource),#通知界面中我的资源
+    url(r'^else_notice$',else_notice ),#通知界面中我的资源
 ]
