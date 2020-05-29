@@ -1,0 +1,141 @@
+<!DOCTYPE html><!--我的申请界面，其中包含已申请的醒目-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">  <!-- 以上代码告诉IE浏览器，IE8/9及以后的版本都会以最高版本IE来渲染页面。 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>华师计算机实验室预约系统——可借教室查询</title>
+    <link rel="stylesheet" href="../static/css/normalize.css">
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/room_operate.css">
+</head>
+<body>
+<header>
+    <div class="logo">
+        <img src="../static/images/logo1.png" alt="华中师范大学logo" class="logo-img vertical-center">
+        <h1 class="vertical-center">计算机实验室预约管理系统</h1>
+    </div>
+    <div class="logoff">
+        <a href="#"><span><em class="username">{{蒲东齐}}<!--姓名--></em>（<em class="usernum">{{2015210817}}<!--账号--></em>）</span></a>
+        <a href="login.html" id="logout"><img src="../static/images/out.png" alt="注销登录"></a>
+    </div>
+</header><!-- header结束 -->
+<div class="container" style="margin:20px auto">
+    <nav class="nav-list">
+        <a href="index.html" class="nav-item" id="nav-item1">
+            <span class="iconfont">&#xe63e;</span>
+            <span class="item-info">主页</span>
+        </a>
+        <a href="room_select.html" class="nav-item" id="nav-item2">
+            <span class="iconfont">&#xe604;</span>
+            <span class="item-info">预约实验室</span>
+        </a>
+        <a href="room_register.html" class="nav-item" id="nav-item3">
+            <span class="iconfont">&#xe601;</span>
+            <span class="item-info">联系管理员</span>
+        </a>
+        <a href="cancel_reserve.html" class="nav-item" id="nav-item4">
+            <span class="iconfont">&#xe64a;</span>
+            <span class="item-info">取消预约</span>
+        </a>
+        <a href="room_release.html" class="nav-item" id="nav-item5">
+            <span class="iconfont">&#xe751;</span>
+            <span class="item-info">可借教室</span>
+        </a>
+        <a href="reserve_record.html" class="nav-item" id="nav-item6">
+            <span class="iconfont">&#xe610;</span>
+            <span class="item-info" >释放教室</span>
+        </a>
+        <a href="default_record.html" class="nav-item" id="nav-item7">
+            <span class="iconfont">&#xe65f;</span>
+            <span class="item-info">超时使用记录</span>
+        </a>
+        <a href="notice.html" class="nav-item" id="nav-item8">
+            <span class="iconfont">&#xe600;</span>
+            <span class="item-info">公告栏</span>
+        </a>
+        <!--<span class="triangle" style="left:727px;"></span>-->
+    </nav>
+    <div class="application-content">
+        <table id="my-application">
+            <tbody>
+            <tr>
+                <th>序号</th><!--我的申请id-->
+                <th>日期</th><!--项目日期-->
+                <th>所借资源</th><!--资源名-->
+                <th>详细内容</th><!--详细内容-->
+            </tr>
+            <tr>
+                <td>{{1}}</td><!--申请id-->
+                <td>{{2020.5.25}}</td><!--项目日期-->
+                <td>{{M305}}</td><!--资源名-->
+                <td>{{班会}}</td><!--详细内容-->
+
+            </tr>
+            <tr>
+                <td>{{2}}</td><!--申请id-->
+                <td>{{2020.5.26}}</td><!--项目日期-->
+                <td>{{G102}}</td><!--资源名-->
+                <td>{{王者荣耀对抗赛}}</td><!--详细内容-->
+
+            </tr>
+            </tbody>
+        </table>
+        <div class="page-select">
+            <div class="page selected" id="page1">1</div>
+            <div class="page" id="page2">2</div>
+            <div class="page" id="page3">3</div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="../static/script/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="../static/script/common.js"></script>
+</body>
+</html>
+<style>
+    .container .application-content{
+        width:1030px;
+        height:500px;
+        background:#fff;
+        padding:20px;
+    }
+    .container table{
+        width:700px;
+        margin:0 auto;
+        font-size:1.6rem;
+        border-collapse: collapse;
+        color:#666;
+    }
+    .container table th,
+    .container table td{
+        padding:10px 0;
+        border:1px solid #eee;
+    }
+    .container table td{
+        text-align: center;
+    }
+
+    /* page-select */
+    .application-content .page-select{
+        width:600px;
+        margin:300px auto;
+        text-align: center;
+    }
+    .application-content .page-select .page{
+        display: inline-block;
+        width:40px;
+        height:40px;
+        line-height: 40px;
+        text-align: center;
+        border:1px solid #ccc;
+        margin-right:5px;
+        font-size:1.6rem;
+    }
+    .application-content .page-select .selected,
+    .application-content .page-select .page:hover{
+        background:#77a6fa;
+    }
+    .application-content .page-select .page:hover{
+        cursor:pointer;
+    }
+</style>
