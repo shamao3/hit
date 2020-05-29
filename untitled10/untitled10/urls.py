@@ -22,13 +22,13 @@ urlpatterns = [
     url(r'^index$',index),
     url(r'^myresource$',myResource),#资源管理
     url(r'^roomclass$', roomclass),#查询可借资源的选择分类
-    url(r'^manage$', manage),#个人中心
+    url(r'^manage$', manage),#个人中心 ！差信息查看页面
     url(r'^adddel$', adddel),#人事管理
-    url(r'^add$', add),#添加账户
-    url(r'^dell$', dell),#删除账户
-    url(r'^borrowable$', borrowableTable), #预约填表
-    url(r'^filltable$', fillTable),
-    url(r'^login$', login),#登录
+    url(r'^add$', add),#添加账户 post，迟点在做
+    url(r'^dell$', dell),#删除账户 post，等会在做
+    url(r'^borrowable$', borrowableTable), #可预约资源
+    url(r'^filltable$', fillTable),#预约填表 post,等会在做
+    url(r'^login$', login),#登录 post,等会在做
     url(r'^cancel$', cancel_reserver),#取消预约
     url(r'^detail$', detail),#预约详情
     url(r'^notice$', notice),#通知主页面
