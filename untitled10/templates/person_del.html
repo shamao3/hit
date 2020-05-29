@@ -25,9 +25,10 @@
 		<h1>添加账户</h1>
 		<div class="wrapper">
 			<div class="w3ls-form">
-				<form action="/" method="post">
+				<form action="/del_user" method="post">
+					{%csrf_token%}
 					<label>账户</label>
-					<input type="text" name="name" placeholder="Username" required/>
+					<input type="text" name="usercode" placeholder="Username" required/>
 					<input type="submit" value="注销" />
 				</form>
 			</div>
