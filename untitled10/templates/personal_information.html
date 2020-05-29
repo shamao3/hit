@@ -1,4 +1,4 @@
-<!DOCTYPE html><!--我的申请界面，其中包含已申请的醒目-->
+<!DOCTYPE html><!--个人信息查看页面界面-->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -28,12 +28,12 @@
         </a>
         <a href="room_select.html" class="nav-item" id="nav-item2">
             <span class="iconfont">&#xe604;</span>
-            <span class="item-info">预约实验室</span>
+            <span class="item-info">人事管理</span>
         </a>
-        <a href="room_register.html" class="nav-item" id="nav-item3">
-            <span class="iconfont">&#xe601;</span>
-            <span class="item-info">联系管理员</span>
-        </a>
+        <!--			<a href="room_register.html" class="nav-item" id="nav-item3">-->
+        <!--				<span class="iconfont">&#xe601;</span>-->
+        <!--				<span class="item-info">联系管理员</span>-->
+        <!--			</a>-->
         <a href="cancel_reserve.html" class="nav-item" id="nav-item4">
             <span class="iconfont">&#xe64a;</span>
             <span class="item-info">取消预约</span>
@@ -44,15 +44,15 @@
         </a>
         <a href="reserve_record.html" class="nav-item" id="nav-item6">
             <span class="iconfont">&#xe610;</span>
-            <span class="item-info" >释放教室</span>
+            <span class="item-info" style="display: none;">我的资源</span>
         </a>
         <a href="default_record.html" class="nav-item" id="nav-item7">
             <span class="iconfont">&#xe65f;</span>
-            <span class="item-info">超时使用记录</span>
+            <span class="item-info">退出</span>
         </a>
         <a href="notice.html" class="nav-item" id="nav-item8">
             <span class="iconfont">&#xe600;</span>
-            <span class="item-info">公告栏</span>
+            <span class="item-info">通知栏</span>
         </a>
         <!--<span class="triangle" style="left:727px;"></span>-->
     </nav>
@@ -63,17 +63,17 @@
                     <th>账户名</th>
                     <th>开始时间</th>
                     <th>结束时间</th>
-                    <th>父节点名</th>
+                    <th>上级管理员</th>
                     <th>权限</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
-                    <td class="td">魔男</td>
-                    <td class="td">2020/5/29</td>
-                    <td class="td">2021.5.29</td>
-                    <td class="td">魔父</td>
-                    <td class="td">预约资源</td>
+                    <td class="td">{{魔男}}</td><!--账户名-->
+                    <td class="td">{{2020/5/29}}</td><!--开始时间-->
+                    <td class="td">{{2021/5/29}}</td><!--结束时间-->
+                    <td class="td">{{魔父}}</td><!--上级管理员-->
+                    <td class="td">{{预约资源}}</td><!--权限-->
                 </tr>
                 </tbody>
             </table>
@@ -131,5 +131,5 @@
         height: 45px;
         display: block;
     }
-    .td{width:630px;overflow:hidden}
+    .td{width:600px;overflow:hidden}
 </style>

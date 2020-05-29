@@ -1,0 +1,109 @@
+<!DOCTYPE html><!--这是个人中心主界面，包含两个按钮,主界面点击个人中心跳转到此界面-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">  <!-- 以上代码告诉IE浏览器，IE8/9及以后的版本都会以最高版本IE来渲染页面。 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>华师计算机实验室预约系统</title>
+    <link rel="stylesheet" href="../static/css/normalize.css">
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/main.css">
+</head>
+<body>
+      <!--[if lte IE8]>
+      <p class="browserupdate">您的浏览器版本太老，请到<a href="http://browsehappy.com">这里</a>更新，以获取最佳的浏览体验。</p>
+      <![endif]-->
+      <header>
+              <div class="logo">
+              <img src="../static/images/logo1.png" alt="华中师范大学logo" class="logo-img vertical-center">
+              <h1 class="vertical-center">计算机实验室预约管理系统</h1>
+              </div>
+              <div class="logoff">
+                        <a href="#"><span><em class="username">{{蒲东齐}}<!--姓名--></em>（<em class="usernum">2015210817</em>）</span></a>
+                        <a href="login.html" id="logout"><img src="../static/images/out.png" alt="注销登录"></a>
+              </div>
+      </header><!-- header结束 -->
+      <div class="container" style="margin:20px auto">
+          <nav class="nav-list">
+              <a href="index.html" class="nav-item" id="nav-item1">
+                  <span class="iconfont">&#xe63e;</span>
+                  <span class="item-info">主页</span>
+              </a>
+              <a href="room_select.html" class="nav-item" id="nav-item2">
+                  <span class="iconfont">&#xe604;</span>
+                  <span class="item-info">人事管理</span>
+              </a>
+              <!--			<a href="room_register.html" class="nav-item" id="nav-item3">-->
+              <!--				<span class="iconfont">&#xe601;</span>-->
+              <!--				<span class="item-info">联系管理员</span>-->
+              <!--			</a>-->
+              <a href="cancel_reserve.html" class="nav-item" id="nav-item4">
+                  <span class="iconfont">&#xe64a;</span>
+                  <span class="item-info">取消预约</span>
+              </a>
+              <a href="room_release.html" class="nav-item" id="nav-item5">
+                  <span class="iconfont">&#xe751;</span>
+                  <span class="item-info">可借教室</span>
+              </a>
+              <a href="reserve_record.html" class="nav-item" id="nav-item6">
+                  <span class="iconfont">&#xe610;</span>
+                  <span class="item-info" style="display: none;">我的资源</span>
+              </a>
+              <a href="default_record.html" class="nav-item" id="nav-item7">
+                  <span class="iconfont">&#xe65f;</span>
+                  <span class="item-info">退出</span>
+              </a>
+              <a href="notice.html" class="nav-item" id="nav-item8">
+                  <span class="iconfont">&#xe600;</span>
+                  <span class="item-info">通知栏</span>
+              </a>
+              <!--<span class="triangle" style="left:727px;"></span>-->
+          </nav>
+          <section class="information-search">
+              <img src="../static/images/search.png" alt="信息查看" class="horizontal-center">
+              <span class="horizontal-center">信息查看</span>
+              <a href="{{信息查看.html}}"></a><!--此处填信息查看页面的html-->
+          </section>
+          <section class="person-manage">
+              <img src="../static/images/my.png" alt="人事管理" class="horizontal-center">
+              <span class="horizontal-center">人事管理</span>
+              <a href="{{人事管理.html}}"></a><!--此处填人事管理页面html-->
+          </section>
+      </div>
+</body>
+</html>
+<style>
+    .information-search{
+        width: 400px;
+        background: rgba(224,98,169,1);
+        top:50px;
+        left:136px;
+        border:2px solid darkslategray;
+        border-radius:30px;
+    }
+    .information-search span{
+        position: absolute;
+        top:180px;
+    }
+    .information-search a{
+        width: 200px;
+    }
+    .person-manage{
+        width: 400px;
+        background: rgba(179,156,198,1);
+        top:50px;
+        right:136px;
+        border:2px solid darkslategray;
+        border-radius:30px;
+    }
+    .person-manage span{
+        position: absolute;
+        top:180px;
+    }
+    .person-manage img{
+        top:80px;
+    }
+    .person-manage a{
+        width: 200px;
+    }
+</style>

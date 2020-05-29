@@ -181,35 +181,37 @@
    }
 
    /**签到或取消预约seat-operate样式**/
-   .seat-operate{
+   /*.seat-operate{*/
+   /*	width:300px;*/
+   /*	top:0;*/
+   /*	left:548px;*/
+   /*}*/
+   /*.seat-operate .register{*/
+   /*	position: relative;*/
+   /*	background: rgba(144,168,228,1);*/
+   /*	height: 150px;*/
+   /*	margin-bottom: 30px;*/
+   /*}*/
+   /*.seat-operate .register a{*/
+   /*	width:300px;*/
+   /*}*/
+   .cancel-reserve{
+	   width:300px;
+	   top:0;
+	   left:548px;
+   	  background: rgba(242,187,133,1);
+   }
+   .cancel-reserve a{
    	width:300px;
-   	top:0;
-   	left:548px;
    }
-   .seat-operate .register{
-   	position: relative;
-   	background: rgba(144,168,228,1);
-   	height: 150px;
-   	margin-bottom: 30px;
+
+   .cancel-reserve img{
+   	top:90px;
    }
-   .seat-operate .register a{
-   	width:300px;
-   }
-   .seat-operate .cancel-reserve{
-   	position: relative;
-   	background: rgba(242,187,133,1);
-   	height: 150px;
-   }
-   .seat-operate .cancel-reserve a{
-   	width:300px;
-   }
-   .seat-operate .register img,
-   .seat-operate .cancel-reserve img{
-   	left:40px;
-   }
-   .seat-operate .register span,
-   .seat-operate .cancel-reserve span{
-   	left:140px;
+   .cancel-reserve span{
+	 position: absolute;
+	 top:180px;
+
    }
  
    /**释放座位seat-release样式**/

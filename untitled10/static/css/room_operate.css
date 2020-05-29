@@ -6,11 +6,16 @@
 }
 .container table{
 	width:700px;
+	height: 525.5px;
 	margin:0 auto;
 	font-size:1.6rem;
 	border-collapse: collapse;
 	color:#666;
 }
+.container table tr{
+	height: 60px;
+}
+
 .container table th,
 .container table td{
 	padding:10px 0;
