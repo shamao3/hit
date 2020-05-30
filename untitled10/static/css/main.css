@@ -135,7 +135,7 @@
 .person-del{
 	width: 300px;
 	background:red;
-	top: 0;
+	top: 50px;
 	left: 250px;
 }
 .person-del div{
@@ -152,7 +152,7 @@
 	.person-add{
 		width: 300px;
 		background: #1dbaf0;
-		top: 0;
+		top: 50px;
 		left: 574px;
 	}
 	.person-add div{
