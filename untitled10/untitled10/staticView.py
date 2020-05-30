@@ -32,3 +32,7 @@ def detail(request):
     return render(request, "./detail.html");
 def personal_information(request):
     return render(request, "./personal_information.html");
+def my_resource(request):
+    return render(request, "./my_resource.html");
+def else_notice(request):
+    return render(request, "./else_notice.html");
