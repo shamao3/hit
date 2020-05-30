@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url
 from .staticView import myResource,roomclass,manage,adddel,index,borrowableTable,fillTable,login,add,dell,cancel_reserver,detail,notice,personal_center,myApplication,personal_information,my_resource,else_notice
-from .formAction import login_check,del_user
+from .formAction import login_check,del_user,get_booking_table,add_user
 urlpatterns = [
     url(r'^$',index),
     url(r'^index$',index),
@@ -41,8 +41,8 @@ urlpatterns = [
     #POST
     url(r'^login_check$', login_check),
     url(r'^del_user$', del_user),
-
-
+    url(r'^get_booking_table$',get_booking_table),#booking_table界面中POST
+    url(r'^add_user$',add_user),#添加账户POST
     url(r'^my_resource$', my_resource),#通知界面中我的资源
     url(r'^else_notice$',else_notice ),#通知界面中我的资源
 ]

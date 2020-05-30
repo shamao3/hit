@@ -16,4 +16,17 @@ def add_user(request):
         password = request.POST.get("password")
         startDate = request.POST.get("startDate")
         endDate = request.POST.get("endDate")
-        return HttpResponse("usercode:"+usercode+";name:"+name+";password:"+password+";startDate:"+startDate+";endDate:"+endDate)
+        return HttpResponse("usercode:" + usercode + ";name:" + name + ";password:" + password + ";startDate:"
+                            + startDate + ";endDate:" + endDate)
+def get_booking_table(request):
+    if(request.method=="POST"):
+        roomname=request.POST.get("roomname")
+        beginDate=request.POST.get("beginDate")
+        beginTime=request.POST.get("beginTime")
+        endDate=request.POST.get("endDate")
+        endTime=request.POST.get("endTime")
+        extras=request.POST.get("extras")
+        return HttpResponse(
+            "roomname:" + roomname + ";beginDate:" + beginDate + ";beginTime:" +
+            beginTime + ";endDate:" + endDate + ";endTime:" + endTime+
+            ";extras:" + extras)
