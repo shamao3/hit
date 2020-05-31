@@ -129,3 +129,12 @@ STATICFILES_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
     os.path.join(HERE, 'static/'),
 )
+
+
+CACHES={
+    'default':{
+        'BACKEND':'redis_cache.cache.RedisCache',
+        'LOCATION':'localhost:6379',#redis数据库，
+        'TIMEOUT':60#过期时间
+    }
+}
