@@ -36,13 +36,16 @@ urlpatterns = [
     url(r'^personal_center$', personal_center),#个人中心主页面
     url(r'^my_application$', myApplication),#我的申请
     url(r'^personal_information$', personal_information),#信息查看
-
+        url(r'^my_resource$', my_resource),#通知界面中我的资源
+        url(r'^else_notice$',else_notice ),#通知界面中其他资源
 
     #POST
     url(r'^login_check$', login_check),
     url(r'^del_user$', del_user),
     url(r'^get_booking_table$',get_booking_table),#booking_table界面中POST
     url(r'^add_user$',add_user),#添加账户POST
-    url(r'^my_resource$', my_resource),#通知界面中我的资源
-    url(r'^else_notice$',else_notice ),#通知界面中我的资源
+    url(r'^get_resManagement_Info$',get_resManagement_Info),#添加账户POST
+
+
+
 ]
