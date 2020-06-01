@@ -18,6 +18,7 @@ from django.urls import path
 from django.conf.urls import url
 from .staticView import myResource,roomclass,manage,adddel,index,borrowableTable,fillTable,login,add,dell,cancel_reserver,detail,notice,personal_center,myApplication,personal_information,my_resource,else_notice
 from .formAction import login_check,del_user,get_booking_table,add_user
+from .dericLeung import getallusser
 urlpatterns = [
     url(r'^$',index),
     url(r'^index$',index),
@@ -40,8 +41,12 @@ urlpatterns = [
     url(r'^else_notice$',else_notice ),#通知界面中我的资源
 
     #POST
-    url(r'^login_check$', login_check),
+    #url(r'^login_check$', login_check),
     url(r'^del_user$', del_user),
     url(r'^get_booking_table$',get_booking_table),#booking_table界面中POST
     url(r'^add_user$',add_user),#添加账户POST
+
+    #梁逸聪测试url
+    url(r'^login_check$', getallusser)
+
 ]
