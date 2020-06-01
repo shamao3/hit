@@ -30,3 +30,7 @@ def get_booking_table(request):
             "roomname:" + roomname + ";beginDate:" + beginDate + ";beginTime:" +
             beginTime + ";endDate:" + endDate + ";endTime:" + endTime+
             ";extras:" + extras)
+
+def get_resManagement_Info(request):
+    if(request.method == "POST");
+        resName = request.POST.get("shift")
