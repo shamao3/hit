@@ -29,7 +29,7 @@ def login_check(request):
         pwd=request.POST.get('pwd')
     with connection.cursor() as cursor:
 
-        sql = 'SELECT id,username,password FROM userModel_user WHERE username = "'+username+'"'
+        sql = 'SELECT id,username,password,name FROM userModel_user WHERE username = "'+username+'"'
         cursor.execute(sql)
         result = cursor.fetchall()
         res = ""
@@ -37,10 +37,11 @@ def login_check(request):
             if(pwd == result[0][2]):
                 #登陆成功，存入session
                 request.session['userid']=result[0][0]
-                request.session['username']=result[0][1]
+                name=result[0][3]
+                request.session['username']=name
                 request.session.set_expiry(120)
-                response=render(request,"./index.html", {'username':username})
-                response.set_cookie('username',result[0][1],604800)
+                response=render(request,"./index.html", {'username':name})
+                response.set_cookie('username',name,604800)
                 return response
             else:
                 return render(request, "./login.html")

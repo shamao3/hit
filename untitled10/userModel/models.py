@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 # Create your models here.
 class User(models.Model):
+    name = models.CharField(max_length=20)
     userName = models.CharField(max_length=20)
     password = models.CharField(max_length=20)
     privilige = models.CharField(max_length=20)
