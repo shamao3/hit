@@ -1,38 +1,89 @@
-from django.shortcuts import render,HttpResponse
-
+from django.shortcuts import render,HttpResponse,redirect
+from .dericLeung import checksession
 def myResource(request):
-    return render(request,"./resource_management.html");
+    username=checksession(request)
+    if(username==False):
+        return redirect('/login')
+    return render(request,"./resource_management.html",{'username':username},{'username':username})
 def personal_center(request):
-    return render(request,"./personal_center.html");
+    username=checksession(request)
+    if(username==False):
+        return redirect('/login')
+    return render(request,"./personal_center.html",{'username':username})
 def notice(request):
-    return render(request,"./notice.html");
+    username=checksession(request)
+    if(username==False):
+        return redirect('/login')
+    return render(request,"./notice.html",{'username':username})
 def myApplication(request):
-    return render(request,"./my_application.html");
+    username=checksession(request)
+    if(username==False):
+        return redirect('/login')
+    return render(request,"./my_application.html",{'username':username})
 def roomclass(request):
-    return render(request,"./roomclass_select.html");
+    username=checksession(request)
+    if(username==False):
+        return redirect('/login')
+    return render(request,"./roomclass_select.html",{'username':username})
 def manage(request):
-    return render(request,"./person_management.html");
+    username=checksession(request)
+    if(username==False):
+        return redirect('/login')
+    return render(request,"./person_management.html",{'username':username})
 def add(request):
-    return render(request,"./person_add.html");
+    username=checksession(request)
+    if(username==False):
+        return redirect('/login')
+    return render(request,"./person_add.html",{'username':username})
 def dell(request):
-    return render(request,"./person_del.html");
+    username=checksession(request)
+    if(username==False):
+        return redirect('/login')
+    return render(request,"./person_del.html",{'username':username})
 def adddel(request):
-    return render(request,"./person_adddel.html");
+    username=checksession(request)
+    if(username==False):
+        return redirect('/login')
+    return render(request,"./person_adddel.html",{'username':username})
 def borrowableTable(request):
-    return render(request,"./resource_borrowable.html");
+    username=checksession(request)
+    if(username==False):
+        return redirect('/login')
+    return render(request,"./resource_borrowable.html",{'username':username})
 def index(request):
-    return render(request,"./index.html");
+    username=checksession(request)
+    if(username==False):
+        return redirect('/login')
+    return render(request,"./index.html",{'username':username})
 def fillTable(request):
-    return render(request,"./booking_table.html");
+    username=checksession(request)
+    if(username==False):
+        return redirect('/login')
+    return render(request,"./booking_table.html",{'username':username})
 def login(request):
-    return render(request,"./login.html");
+    return render(request,"./login.html")
 def cancel_reserver(request):
-    return render(request, "./cancel_reserve.html");
+    username=checksession(request)
+    if(username==False):
+        return redirect('/login')
+    return render(request, "./cancel_reserve.html",{'username':username})
 def detail(request):
-    return render(request, "./detail.html");
+    username=checksession(request)
+    if(username==False):
+        return redirect('/login')
+    return render(request, "./detail.html",{'username':username})
 def personal_information(request):
-    return render(request, "./personal_information.html");
+    username=checksession(request)
+    if(username==False):
+        return redirect('/login')
+    return render(request, "./personal_information.html",{'username':username})
 def my_resource(request):
-    return render(request, "./my_resource.html");
+    username=checksession(request)
+    if(username==False):
+        return redirect('/login')
+    return render(request, "./my_resource.html",{'username':username})
 def else_notice(request):
-    return render(request, "./else_notice.html");
+    username=checksession(request)
+    if(username==False):
+        return redirect('/login')
+    return render(request, "./else_notice.html",{'username':username})

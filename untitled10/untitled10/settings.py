@@ -130,6 +130,9 @@ STATICFILES_DIRS = (
     os.path.join(HERE, 'static/'),
 )
 
+#状态保持
+SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
+
 
 CACHES={
     'default':{
