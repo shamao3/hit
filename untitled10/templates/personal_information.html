@@ -69,15 +69,17 @@
                 </tr>
                 </thead>
                 <tbody>
+                {% for i in PerInfoData %}
                 <tr>
                     <tr>
-						<td class="td">{魔男}</td><!--账户名-->
-						<td class="td">{2017.12.1}</td><!--开始时间-->
-						<td class="td">{2017.12.2}</td><!--结束时间-->
-						<td class="td">{魔父}</td><!--上级管理员-->
-                        <td class="td">{预约资源}</td><!--权限-->
+						<td class="td">{{i.accountName}}</td><!--账户名-->
+						<td class="td">{{i.startdate}}</td><!--开始时间-->
+						<td class="td">{{i.enddate}}</td><!--结束时间-->
+						<td class="td">{{i.upperuser}}</td><!--上级管理员-->
+                        <td class="td">{{i.privilige}}</td><!--权限-->
 					</tr>
                 </tr>
+				{% endfor %}
                 </tbody>
             </table>
     </div>

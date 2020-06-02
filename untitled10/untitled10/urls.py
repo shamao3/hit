@@ -13,12 +13,15 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path
-from django.conf.urls import url
-from .staticView import myResource,roomclass,manage,adddel,index,borrowableTable,fillTable,login,add,dell,cancel_reserver,detail,notice,myApplication,personal_information,my_resource,else_notice
-from .formAction import del_user,get_booking_table,add_user
-from .dericLeung import login_check,getavailableres
+
+from .dericLeung import login_check, getavailableres
+from .formAction import del_user, get_booking_table, add_user
+from .lym_database import getMyApplication, getPersonalInformation
+from .staticView import myResource, roomclass, manage, adddel, index, borrowableTable, fillTable, login, add, dell, \
+    cancel_reserver, detail, notice, myApplication, personal_information, my_resource, else_notice
 from .zxl import cancel_detail
 
 urlpatterns = [
@@ -51,4 +54,6 @@ urlpatterns = [
     #GET
     url(r'^borrowable/$', getavailableres),#可预约资源
     url(r'^cancel$', cancel_detail),#取消预约
+    url(r'^applicationData/$',getMyApplication),
+    url(r'^getPersonalInformation/$',getPersonalInformation)
 ]
