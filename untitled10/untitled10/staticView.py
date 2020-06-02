@@ -5,11 +5,6 @@ def myResource(request):
     if(username==False):
         return redirect('/login')
     return render(request,"./resource_management.html",{'username':username},{'username':username})
-def personal_center(request):
-    username=checksession(request)
-    if(username==False):
-        return redirect('/login')
-    return render(request,"./personal_center.html",{'username':username})
 def notice(request):
     username=checksession(request)
     if(username==False):

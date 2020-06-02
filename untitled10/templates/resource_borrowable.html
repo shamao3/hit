@@ -19,7 +19,7 @@
 		<h1 class="vertical-center">哈工大资源预约管理系统</h1>
 	</div>
 	<div class="logoff">
-		<a href="/personal_center"><span><em class="username">{{username}}</em></span></a>
+		<a href="/manage"><span><em class="username">{{username}}</em></span></a>
 		<a href="login.html" id="logout"><img src="../static/images/out.png" alt="注销登录"></a>
 	</div>
 </header><!-- header结束 -->
@@ -34,7 +34,7 @@
 				<span class="iconfont">&#xe604;</span>
 				<span class="item-info">人事管理</span>
 			</a>
-						<a href="/personal_center" class="nav-item" id="nav-item3">
+						<a href="/manage" class="nav-item" id="nav-item3">
 							<span class="iconfont">&#xe601;</span>
 							<span class="item-info">个人中心</span>
 						</a>
@@ -80,48 +80,14 @@
 						<th>预约日期</th>
 						<th>借用</th>
 					</tr>
+					{% for item in res %}
 					<tr>
-						<td>1</td>
-						<td>9-1122</td>
+						<td>{{item.id}}</td>
+						<td>{{item.name}}</td>
 						<td>2017.12.2</td>
 						<td><a href="/filltable">预约</a></td>
 					</tr>
-					<tr>
-						<td>2</td>
-						<td>9-1122</td>
-						<td>2017.12.2</td>
-						<td><a href="/filltable">预约</a></td>
-					</tr>
-					<tr>
-						<td>3</td>
-						<td>9-312</td>
-						<td>2017.12.2</td>
-						<td><a href="/filltable">预约</a></td>
-					</tr>
-					<tr>
-						<td>4</td>
-						<td>9-1133</td>
-						<td>2017.12.3</td>
-						<td><a href="/filltable">预约</a></td>
-					</tr>
-					<tr>
-						<td>5</td>
-						<td>9-1133</td>
-						<td>2017.12.3</td>
-						<td><a href="/filltable">预约</a></td>
-					</tr>
-					<tr>
-						<td>6</td>
-						<td>9-303</td>
-						<td>2017.12.5</td>
-						<td><a href="/filltable">预约</a></td>
-					</tr>
-					<tr>
-						<td>7</td>
-						<td>9-312</td>
-						<td>2017.12.6</td>
-						<td><a href="/filltable">预约</a></td>
-					</tr>
+					{% endfor %}
 
 				</tbody>
 			</table>
