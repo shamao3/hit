@@ -1,7 +1,8 @@
 from django.db import connection,models
 from django.http import HttpResponse
 from django.shortcuts import render,redirect
-from datetime import date
+from django.utils import timezone
+import datetime
 
 
 def checksession(request):
@@ -53,9 +54,18 @@ def getavailableres(request):
     if (username == False):
         return redirect('/login')
     type = request.GET.get('type', '')
+
     id = request.session.get('id','')
+    today = timezone.now().strftime('%Y-%m-%d')
     with connection.cursor() as cursor:
-        sql = 'SELECT  FROM userModel_resource WHERE isborrowed = false AND type = "'+type+'"'
+        sql = 'SELECT name FROM userModel_resource WHERE isborrowed = "false" AND type = "'+type+'"'
         cursor.execute(sql)
         result = cursor.fetchall()
-        res=[]
+        res = []
+        index = 0
+        for item in result:
+            index+=1
+            temp = {"id":index,"name":item[0]}
+            res.append(temp)
+        return render(request,'./resource_borrowable.html',{'resource':res})
+    return HttpResponse('ERROR')

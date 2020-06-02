@@ -16,9 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url
-from .staticView import myResource,roomclass,manage,adddel,index,borrowableTable,fillTable,login,add,dell,cancel_reserver,detail,notice,personal_center,myApplication,personal_information,my_resource,else_notice
+from .staticView import myResource,roomclass,manage,adddel,index,borrowableTable,fillTable,login,add,dell,cancel_reserver,detail,notice,myApplication,personal_information,my_resource,else_notice
 from .formAction import del_user,get_booking_table,add_user
-from .dericLeung import login_check
+from .dericLeung import login_check,getavailableres
 urlpatterns = [
     url(r'^$',index),
     url(r'^index$',index),
@@ -34,7 +34,6 @@ urlpatterns = [
     url(r'^cancel$', cancel_reserver),#取消预约
     url(r'^detail$', detail),#预约详情
     url(r'^notice$', notice),#通知主页面
-    url(r'^personal_center$', personal_center),#个人中心主页面
     url(r'^my_application$', myApplication),#我的申请
     url(r'^personal_information$', personal_information),#信息查看
     url(r'^my_resource$', my_resource),#通知界面中我的资源
@@ -48,5 +47,5 @@ urlpatterns = [
     #url(r'^get_resManagement_Info$', get_resManagement_Info),#资源管理POST 错了，没写完
 
     #GET
-url(r'^borrowable/$', ), #可预约资源
+    url(r'^borrowable/$', getavailableres), #可预约资源
 ]
