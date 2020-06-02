@@ -18,7 +18,9 @@ from django.urls import path
 from django.conf.urls import url
 from .staticView import myResource,roomclass,manage,adddel,index,borrowableTable,fillTable,login,add,dell,cancel_reserver,detail,notice,myApplication,personal_information,my_resource,else_notice
 from .formAction import del_user,get_booking_table,add_user
-from .dericLeung import login_check,getavailableres
+from .dericLeung import login_check，getavailableres
+from .zxl import cancel_detail
+
 urlpatterns = [
     url(r'^$',index),
     url(r'^index$',index),
@@ -47,5 +49,6 @@ urlpatterns = [
     #url(r'^get_resManagement_Info$', get_resManagement_Info),#资源管理POST 错了，没写完
 
     #GET
-    url(r'^borrowable/$', getavailableres), #可预约资源
+    url(r'^borrowable/$', getavailableres),#可预约资源
+    url(r'^cancel$', cancel_detail),#取消预约
 ]
