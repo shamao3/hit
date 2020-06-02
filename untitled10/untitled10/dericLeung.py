@@ -47,3 +47,15 @@ def login_check(request):
                 return render(request, "./login.html")
     return HttpResponse("ERROR")
 
+def getavailableres(request):
+    username = checksession(request)
+
+    if (username == False):
+        return redirect('/login')
+    type = request.GET.get('type', '')
+    id = request.session.get('id','')
+    with connection.cursor() as cursor:
+        sql = 'SELECT  FROM userModel_resource WHERE isborrowed = false AND type = "'+type+'"'
+        cursor.execute(sql)
+        result = cursor.fetchall()
+        res=[]

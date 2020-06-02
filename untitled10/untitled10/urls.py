@@ -28,7 +28,7 @@ urlpatterns = [
     url(r'^adddel$', adddel),#人事管理
     url(r'^add$', add),#添加账户 post，迟点在做
     url(r'^dell$', dell),#删除账户
-    url(r'^borrowable$', borrowableTable), #可预约资源
+
     url(r'^filltable$', fillTable),#预约填表
     url(r'^login$', login),#登录
     url(r'^cancel$', cancel_reserver),#取消预约
@@ -47,5 +47,6 @@ urlpatterns = [
     url(r'^add_user$',add_user),#添加账户POST
     #url(r'^get_resManagement_Info$', get_resManagement_Info),#资源管理POST 错了，没写完
 
-
+    #GET
+url(r'^borrowable/$', ), #可预约资源
 ]

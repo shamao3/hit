@@ -34,7 +34,5 @@ class Record(models.Model):
     resource = models.ForeignKey('Resource',on_delete=models.CASCADE)
     startdate = models.DateField()
     enddate = models.DateField()
-    starttime = models.TimeField()
-    endtime = models.TimeField()
     extras = models.CharField(max_length=100)
     state = models.CharField(max_length=50)
