@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import render,redirect
 from django.utils import timezone
 import datetime
+from datetime import date
 
 
 def checksession(request):
@@ -58,7 +59,7 @@ def getavailableres(request):
     id = request.session.get('id','')
     today = timezone.now().strftime('%Y-%m-%d')
     with connection.cursor() as cursor:
-        sql = 'SELECT name FROM userModel_resource WHERE isborrowed = "false" AND type = "'+type+'"'
+        sql = 'SELECT name FROM userModel_resource WHERE type = "'+type+'"'
         cursor.execute(sql)
         result = cursor.fetchall()
         res = []
@@ -69,3 +70,12 @@ def getavailableres(request):
             res.append(temp)
         return render(request,'./resource_borrowable.html',{'resource':res})
     return HttpResponse('ERROR')
+
+
+def getdate(request):
+    with connection.cursor() as cursor:
+        sql = 'SELECT startdate FROM userModel_record'
+        cursor.execute(sql)
+        result = cursor.fetchall()
+        res = ''
+        return HttpResponse(result)
