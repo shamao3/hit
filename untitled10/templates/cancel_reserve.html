@@ -68,57 +68,59 @@
 						<th>状态</th>
 						<th>取消</th>
 					</tr>
-					<tr>
-						<td>{{1}}</td>
-						<td>{{M101}}</td>
-						<td>已预约/申请中</td>
-						<td><button class="cancel_button">取消</button></td>
-					</tr>
-					<tr>
-						<td>{{2}}</td>
-						<td>{{N304}}</td>
-						<td>已预约/申请中</td>
-						<td><button class="cancel_button">取消</button></td>
-					</tr>
-					<tr>
-						<td>{{3}}</td>
-						<td>{{N302}}</td>
-						<td>已预约/申请中</td>
-						<td><button class="cancel_button" > 取消</button></td>
-					</tr>
-					<tr>
-						<td>{{4}}</td>
-						<td>{{M208}}</td>
-						<td>已预约/申请中</td>
-						<td><button class="cancel_button">取消</button></td>
-					</tr>
-					<tr>
-						<td>{{5}}</td>
-						<td>{{Y405}}</td>
-						<td>已预约/申请中</td>
-						<td><button class="cancel_button">取消</button></td>
-					</tr>
-					<tr>
-						<td>{{6}}</td>
-						<td>{{Y517}}</td>
-						<td>已预约/申请中</td>
-						<td><button class="cancel_button">取消</button></td>
-					</tr>
-					<tr>
-						<td>{{7}}</td>
-						<td>{{B101}}</td>
-						<td>已预约/申请中</td>
-						<td><button class="cancel_button">取消</button></td>
-					</tr>
-<<<<<<<<< Temporary merge branch 1
-=========
-					<tr>
-						<td>{{8}}</td>
-						<td>{{G105}}</td>
-						<td>已预约/申请中</td>
+					{% for i in detail %}
+						<tr>
+							<td>{{i.num}}</td>
+							<td>{{i.name}}</td>
+							<td>{{i.state}}</td>
+							<td><button class="cancel_button">取消</button></td>
+						</tr>
+					{% endfor %}
+<!--					<tr>-->
+<!--						<td>{{2}}</td>-->
+<!--						<td>{{N304}}</td>-->
+<!--						<td>已预约/申请中</td>-->
+<!--						<td><button class="cancel_button">取消</button></td>-->
+<!--					</tr>-->
+<!--					<tr>-->
+<!--						<td>{{3}}</td>-->
+<!--						<td>{{N302}}</td>-->
+<!--						<td>已预约/申请中</td>-->
+<!--						<td><button class="cancel_button" > 取消</button></td>-->
+<!--					</tr>-->
+<!--					<tr>-->
+<!--						<td>{{4}}</td>-->
+<!--						<td>{{M208}}</td>-->
+<!--						<td>已预约/申请中</td>-->
+<!--						<td><button class="cancel_button">取消</button></td>-->
+<!--					</tr>-->
+<!--					<tr>-->
+<!--						<td>{{5}}</td>-->
+<!--						<td>{{Y405}}</td>-->
+<!--						<td>已预约/申请中</td>-->
+<!--						<td><button class="cancel_button">取消</button></td>-->
+<!--					</tr>-->
+<!--					<tr>-->
+<!--						<td>{{6}}</td>-->
+<!--						<td>{{Y517}}</td>-->
+<!--						<td>已预约/申请中</td>-->
+<!--						<td><button class="cancel_button">取消</button></td>-->
+<!--					</tr>-->
+<!--					<tr>-->
+<!--						<td>{{7}}</td>-->
+<!--						<td>{{B101}}</td>-->
+<!--						<td>已预约/申请中</td>-->
+<!--						<td><button class="cancel_button">取消</button></td>-->
+<!--					</tr>-->
+<!--<<<<<<<<< Temporary merge branch 1-->
+<!--=========-->
+<!--					<tr>-->
+<!--						<td>{{8}}</td>-->
+<!--						<td>{{G105}}</td>-->
+<!--						<td>已预约/申请中</td>-->
 
-						<td><button class="cancel_button">取消</button></td>
-					</tr>
+<!--						<td><button class="cancel_button">取消</button></td>-->
+<!--					</tr>-->
 
 >>>>>>>>> Temporary merge branch 2
 				</tbody>
