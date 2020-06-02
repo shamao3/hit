@@ -58,7 +58,7 @@ def getavailableres(request):
     id = request.session.get('id','')
     today = timezone.now().strftime('%Y-%m-%d')
     with connection.cursor() as cursor:
-        sql = 'SELECT name FROM userModel_resource WHERE isborrowed = "false" AND type = "'+type+'"'
+        sql = 'SELECT name FROM userModel_resource WHERE type = "'+type+'"'
         cursor.execute(sql)
         result = cursor.fetchall()
         res = []
