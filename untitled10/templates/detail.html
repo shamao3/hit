@@ -68,21 +68,48 @@
 						<div class="status-content-latest">您的请求开始处理</div>
 						<div class="status-line"></div>
 					</li>
+					{% if state == "处理中"%}
 					<li class="latest">
-						<div class="status-content-latest">等待处理</div>
+						<div class="status-content-latest">处理中</div>
+						<div class="status-line"></div>
+					</li>
+
+					{% elif state == "预约成功"%}
+					<li class="latest">
+						<div class="status-content-latest">处理中</div>
 						<div class="status-line"></div>
 					</li>
                     <li class="latest">
 						<div class="status-content-latest">预约成功</div>
 						<div class="status-line"></div>
 					</li>
+
+					{% elif state == "预约失败"%}
+					<li class="latest">
+						<div class="status-content-latest">处理中</div>
+						<div class="status-line"></div>
+					</li>
                     <li class="latest">
 						<div class="status-content-latest">预约失败</div>
 						<div class="status-line"></div>
 					</li>
+
+					{% elif state == "已结束"%}
+					<li class="latest">
+						<div class="status-content-latest">处理中</div>
+						<div class="status-line"></div>
+					</li>
+					<li class="latest">
+						<div class="status-content-latest">预约成功</div>
+						<div class="status-line"></div>
+					</li>
+					<li class="latest">
+						<div class="status-content-latest">已结束</div>
+						<div class="status-line"></div>
+					</li>
+					{% endif %}
 				</ul>
 			</div>
-
 	</div>
         <button href="">查看其他预约</button>
     </div>

@@ -25,3 +25,15 @@ def cancel_detail(request):
                 print(res)
             return render(request,'./cancel_reserve.html',{"detail":res})
         else : return HttpResponse("no")
+def detail(request):
+    #a = request.session.get('userid', '')
+    id = request.GET.get('id','')
+    dic={}
+    with connection.cursor() as cursor:
+        #sql = 'SELECT b.state userModel_resource a userModel_record b where b.id='+str(a)+' and a.name="'+name+'"and a.id=b.resource_id'
+        sql='SELECT a.state from userModel_record a where id ='+str(id)
+        cursor.execute(sql)
+        result=cursor.fetchall()
+        for i in result:
+            dic['state']=i[0]
+        return render(request,'./detail.html',dic)

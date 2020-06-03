@@ -71,8 +71,7 @@
                 <td>{{i.num}}</td><!--申请id-->
                 <td>{{i.date}}</td><!--项目日期-->
                 <td>{{i.resource}}</td><!--资源名-->
-                <td>{{i.content}}</td><!--详细内容-->
-
+                <td><button class="cancel_button" onclick="location.href='/detail?id={{i.id}}'" >详情</button></td><!--详细内容-->
             </tr>
 			{% endfor %}
 <!--            <tr>-->

@@ -12,7 +12,7 @@ def getMyApplication(request):
     a=request.session.get('userid', '')
     print (a)
     with connection.cursor() as cursor:
-        sql='SELECT b.name,a.startdate,a.extras FROM userModel_record a,userModel_resource b WHERE ' \
+        sql='SELECT b.name,a.startdate,a.extras,a.id FROM userModel_record a,userModel_resource b WHERE ' \
             'a.resource_id=b.id and a.user_id='+str(a)
         # sql='SELECT * FROM userModel_user where id='+str(a)
         cursor.execute(sql)
@@ -27,6 +27,7 @@ def getMyApplication(request):
                 temp['date'] = j[1]
                 temp['resource'] = j[0]
                 temp['content'] = j[2]
+                temp['id']=j[3]
                 res.append(temp.copy())
                 num+=1
             return render(request,'./my_application.html',{'applicationData':res})
@@ -64,6 +65,7 @@ def getPersonalInformation(request):
             cursor.execute(sql)
             result = cursor.fetchall()
             temp = {}
+            print(result)
             if (len(result) != 0):
                 temp['accountName'] = result[0][0]
                 temp['startdate'] = result[0][1].strftime('%Y-%m-%d')
