@@ -66,20 +66,22 @@
                 <th>所借资源</th><!--资源名-->
                 <th>详细内容</th><!--详细内容-->
             </tr>
+            {% for i in applicationData %}
             <tr>
-                <td>{{1}}</td><!--申请id-->
-                <td>{{2020.5.25}}</td><!--项目日期-->
-                <td>{{M305}}</td><!--资源名-->
-                <td>{{班会}}</td><!--详细内容-->
+                <td>{{i.num}}</td><!--申请id-->
+                <td>{{i.date}}</td><!--项目日期-->
+                <td>{{i.resource}}</td><!--资源名-->
+                <td>{{i.content}}</td><!--详细内容-->
 
             </tr>
-            <tr>
-                <td>{{2}}</td><!--申请id-->
-                <td>{{2020.5.26}}</td><!--项目日期-->
-                <td>{{G102}}</td><!--资源名-->
-                <td>{{王者荣耀对抗赛}}</td><!--详细内容-->
+			{% endfor %}
+<!--            <tr>-->
+<!--                <td>{{2}}</td>&lt;!&ndash;申请id&ndash;&gt;-->
+<!--                <td>{{2020.5.26}}</td>&lt;!&ndash;项目日期&ndash;&gt;-->
+<!--                <td>{{G102}}</td>&lt;!&ndash;资源名&ndash;&gt;-->
+<!--                <td>{{王者荣耀对抗赛}}</td>&lt;!&ndash;详细内容&ndash;&gt;-->
 
-            </tr>
+<!--            </tr>-->
             </tbody>
         </table>
         <div class="page-select">

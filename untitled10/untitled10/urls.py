@@ -13,12 +13,15 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path
-from django.conf.urls import url
-from .staticView import myResource,roomclass,manage,adddel,index,borrowableTable,fillTable,login,add,dell,cancel_reserver,detail,notice,myApplication,personal_information,my_resource,else_notice
-from .formAction import del_user,get_booking_table,add_user
-from .dericLeung import login_check,getavailableres
+
+from .dericLeung import login_check, getavailableres
+from .formAction import del_user, get_booking_table, add_user
+from .lym_database import getMyApplication, getPersonalInformation
+from .staticView import myResource, roomclass, manage, adddel, index, borrowableTable, fillTable, login, add, dell, \
+    cancel_reserver, detail, notice, myApplication, personal_information, my_resource, else_notice
 from .zxl import cancel_detail
 
 urlpatterns = [
@@ -36,8 +39,8 @@ urlpatterns = [
     url(r'^cancel$', cancel_reserver),#取消预约
     url(r'^detail$', detail),#预约详情
     url(r'^notice$', notice),#通知主页面
-    url(r'^my_application$', myApplication),#我的申请
-    url(r'^personal_information$', personal_information),#信息查看
+    #url(r'^my_application$', myApplication),#我的申请
+    #url(r'^personal_information$', personal_information),#信息查看
     url(r'^my_resource$', my_resource),#通知界面中我的资源
     url(r'^else_notice$',else_notice ),#通知界面中其他资源
 
@@ -51,4 +54,6 @@ urlpatterns = [
     #GET
     url(r'^borrowable/$', getavailableres),#可预约资源
     url(r'^cancel$', cancel_detail),#取消预约
+    url(r'^my_application/$',getMyApplication),#我的申请数据获取
+    url(r'^personal_information/$',getPersonalInformation)#个人信息查看数据获取
 ]
