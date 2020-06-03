@@ -74,8 +74,15 @@ def getavailableres(request):
 
 def getdate(request):
     with connection.cursor() as cursor:
-        sql = 'SELECT startdate FROM userModel_record'
+        sql = 'SELECT startdate FROM userModel_record WHERE date('')'
         cursor.execute(sql)
         result = cursor.fetchall()
         res = ''
         return HttpResponse(result)
+
+
+def getAvaRes(time,type):#两个都是string
+    with connection.cursor() as cursor:
+        sql = 'SELECT  FROM userModel_record a, userModel_resource b WHERE a.resource_id = b.id and date('')'
+        cursor.execute(sql)
+        result = cursor.fetchall()

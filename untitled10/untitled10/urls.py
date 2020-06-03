@@ -21,8 +21,8 @@ from .dericLeung import login_check, getavailableres
 from .formAction import del_user, get_booking_table, add_user
 from .lym_database import getMyApplication, getPersonalInformation
 from .staticView import myResource, roomclass, manage, adddel, index, borrowableTable, fillTable, login, add, dell, \
-    cancel_reserver, detail, notice, myApplication, personal_information, my_resource, else_notice
-from .zxl import cancel_detail
+    cancel_reserver, notice, myApplication, personal_information, my_resource, else_notice
+from .zxl import cancel_detail,detail
 
 urlpatterns = [
     url(r'^$',index),
@@ -36,24 +36,25 @@ urlpatterns = [
 
     url(r'^filltable$', fillTable),#预约填表
     url(r'^login$', login),#登录
-    url(r'^cancel$', cancel_reserver),#取消预约
-    url(r'^detail$', detail),#预约详情
+    #url(r'^cancel$', cancel_reserver),#取消预约
+
     url(r'^notice$', notice),#通知主页面
     #url(r'^my_application$', myApplication),#我的申请
     #url(r'^personal_information$', personal_information),#信息查看
     url(r'^my_resource$', my_resource),#通知界面中我的资源
     url(r'^else_notice$',else_notice ),#通知界面中其他资源
-
+    url(r'^cancel$', cancel_detail),#取消预约
     #POST
     url(r'^login_check$', login_check),
     url(r'^del_user$', del_user),
     url(r'^get_booking_table$',get_booking_table),#booking_table界面中POST
     url(r'^add_user$',add_user),#添加账户POST
+
     #url(r'^get_resManagement_Info$', get_resManagement_Info),#资源管理POST 错了，没写完
 
     #GET
     url(r'^borrowable/$', getavailableres),#可预约资源
-    url(r'^cancel$', cancel_detail),#取消预约
+    url(r'^detail/$', detail),#预约详情
     url(r'^my_application/$',getMyApplication),#我的申请数据获取
     url(r'^personal_information/$',getPersonalInformation),#个人信息查看数据获取
     url(r'^else_get/$',else_notice),#消息是否已读获取
