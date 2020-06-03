@@ -39,8 +39,8 @@ urlpatterns = [
     url(r'^cancel$', cancel_reserver),#取消预约
     url(r'^detail$', detail),#预约详情
     url(r'^notice$', notice),#通知主页面
-    url(r'^my_application$', myApplication),#我的申请
-    url(r'^personal_information$', personal_information),#信息查看
+    #url(r'^my_application$', myApplication),#我的申请
+    #url(r'^personal_information$', personal_information),#信息查看
     url(r'^my_resource$', my_resource),#通知界面中我的资源
     url(r'^else_notice$',else_notice ),#通知界面中其他资源
 
