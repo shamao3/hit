@@ -51,7 +51,7 @@ def getPersonalInformation(request):
      else:
 
            sql='SELECT a.userName,a.startdate,a.enddate,b.userName,a.privilige FROM userModel_user a,userModel_user b,' \
-            'userModel_userrelationship c WHERE a.id='+str(a)+' and c.childuser_id=a.id and c.upperuser_id=b.id'
+            'userModel_userrelationship c WHERE c.childuser_id=a.id and c.upperuser_id=b.id and a.id='+str(a)
         #sql='SELECT * FROM userModel_user where id="'+id+'"'
            cursor.execute(sql)
            result = cursor.fetchall()

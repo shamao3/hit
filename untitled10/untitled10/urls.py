@@ -54,6 +54,6 @@ urlpatterns = [
     #GET
     url(r'^borrowable/$', getavailableres),#可预约资源
     url(r'^cancel$', cancel_detail),#取消预约
-    url(r'^applicationData/$',getMyApplication),
-    url(r'^getPersonalInformation/$',getPersonalInformation)
+    url(r'^my_application/$',getMyApplication),#我的申请数据获取
+    url(r'^personal_information/$',getPersonalInformation)#个人信息查看数据获取
 ]
