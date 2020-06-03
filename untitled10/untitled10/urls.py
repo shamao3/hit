@@ -55,5 +55,7 @@ urlpatterns = [
     url(r'^borrowable/$', getavailableres),#可预约资源
     url(r'^cancel$', cancel_detail),#取消预约
     url(r'^my_application/$',getMyApplication),#我的申请数据获取
-    url(r'^personal_information/$',getPersonalInformation)#个人信息查看数据获取
+    url(r'^personal_information/$',getPersonalInformation),#个人信息查看数据获取
+    url(r'^else_get/$',else_notice),#消息是否已读获取
+    url(r'^my_res/$',my_resource)#我的资源是数据获取
 ]

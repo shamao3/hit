@@ -59,17 +59,22 @@
     <div class="else-content">
         <table id="else">
             <tbody>
+
             <tr>
+                <th>序号</th><!--通知内容-->
                 <th>通知内容</th><!--通知内容-->
                 <th>是否已读</th><!--判断是否已读-->
             </tr>
+            {% for i in applicationData %}
             <tr>
-                <th>M108预约已经被取消</th>
-                <th>未读</th>
+                <th>{{i.num}}</th>
+                <th>{{i.text}}</th>
+                <th>{{i.isread}}</th>
             </tr>
             <tr>
-                <th>G201预约成功</th>
-                <th>已读</th>
+                <th>{{i.num}}</th>
+                <th>{{i.text}}</th>
+                <th>{{i.isread}}</th>
             </tr>
             </tbody>
         </table>
