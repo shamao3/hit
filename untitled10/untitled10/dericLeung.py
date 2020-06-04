@@ -133,3 +133,47 @@ def getAvaRes(type,page,time='now',place=''):#两个都是string
         sizegroup=range(0,size)
         return  group,sizegroup
     return []
+
+def resourcemanage(request):
+    username = checksession(request)
+    if (username == False):
+        return redirect('/login')
+    page=request.GET.get('page','1')
+    id=str(request.session.get('userid',''))
+    result,size = getmyres(page=page,id=id)
+
+    return render(request,'./resource_management.html',{'username':username,'size':size,'resource':result})
+
+def getmyres(page='1',id=None):
+    if(id==None):
+        return []
+    else:
+        sql = 'select name,isavailable from userModel_resource a ,userModel_resourcebelonging b ' \
+              'where a.id=b.resource_id and b.owner_id='+id
+        with connection.cursor() as cursor:
+            cursor.execute(sql)
+            result = cursor.fetchall()
+            print(id)
+            print(result)
+            res=[]
+            for index in range(0, len(result)):
+                tempdic={'id':index+1, 'name':result[index][0]}
+                if(result[index][1]):
+                    tempdic['state']='可借用'
+                else:
+                    tempdic['state']='不可借用'
+                res.append(tempdic)
+            print(res)
+            size = len(result)//7+1
+            pages={}
+            for i in range(0,size):
+                beginindex=7*i
+                endindex=7*(i+1)
+                if(endindex>len(res)):
+                    endindex=len(res)
+                tempgroup=res[beginindex:endindex]
+                pages[str(i+1)]=tempgroup
+            print(pages)
+            return pages.get(page,'1'),range(1,size+1)
+        return []
+
