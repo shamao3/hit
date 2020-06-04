@@ -23,7 +23,7 @@ from .lym_database import getMyApplication, getPersonalInformation
 from .staticView import myResource, roomclass, manage, adddel, index, borrowableTable, fillTable, login, add, dell, \
     cancel_reserver, notice, myApplication, personal_information, my_resource, else_notice
 from .zxl import cancel_detail,detail
-from .ls_database import registered, delete
+from .ls_database import registered
 urlpatterns = [
     url(r'^$',index),
     url(r'^index$',index),
@@ -49,8 +49,6 @@ urlpatterns = [
     url(r'^del_user$', del_user),
     url(r'^get_booking_table$',get_booking_table),#booking_table界面中POST
     url(r'^add_user$',add_user),#添加账户POST
-    url(r'^registered$', registered),  # 注册账户
-    url(r'^delete$', delete),  # 注销账户
 
     #url(r'^get_resManagement_Info$', get_resManagement_Info),#资源管理POST 错了，没写完
 
@@ -61,5 +59,5 @@ urlpatterns = [
     url(r'^personal_information/$',getPersonalInformation),#个人信息查看数据获取
     url(r'^else_get/$',else_notice),#消息是否已读获取
     url(r'^my_res/$',my_resource),#我的资源是数据获取
-
+    url(r'^person_add/$',registered)#注册账户
 ]

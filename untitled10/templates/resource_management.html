@@ -40,11 +40,11 @@
 				<span class="iconfont">&#xe64a;</span>
 				<span class="item-info">取消预约</span>
 			</a>
-			<a href="/borrowable" class="nav-item" id="nav-item5">
+			<a href="/roomclass" class="nav-item" id="nav-item5">
 				<span class="iconfont">&#xe751;</span>
 				<span class="item-info">可借教室</span>
 			</a>
-			<a href="/myresource" class="nav-item" id="nav-item6">
+			<a href="/myresource/?page=1" class="nav-item" id="nav-item6">
 				<span class="iconfont">&#xe610;</span>
 				<span class="item-info" style="display: none;">我的资源</span>
 			</a>
@@ -72,20 +72,22 @@
 						<th>选择</th>
 
 					</tr>
+					{% for item in resource %}
 					<tr>
-						<td>1</td>
-						<td>M101</td>
-						<td>可借用</td>
+						<td>{{item.id}}</td>
+						<td>{{item.name}}</td>
+						<td>{{item.state}}</td>
 						<td><input type="checkbox" name="shift" value="shift" ></td>
 					</tr>
-
+				{% endfor %}
 				</tbody>
 			</table>
-				<input type="submit" name="submit" value="change" ></input>
+				<input type="submit" name="submit" value="更改" />
 			</form>
 			<div class="page-select">
-				<div class="page selected" id="page1">1</div>
-				<div class="page" id="page2">2</div>
+				{% for item in size %}
+				<div class="page" id="page1"><a href="/myresource/?page={{item}}"> {{item}} </a></div>
+				{% endfor %}
 			</div>
 
 
