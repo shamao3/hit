@@ -30,11 +30,11 @@
 				<form action="/add_user" method="post">
 					{%csrf_token%}
 					<label>账户</label>
-					<input type="text" name="usercode" placeholder="UserCode" required/>
+					<input type="text" id="userName" name="userName" placeholder="UserName" required/>
 					<label>昵称</label>
-					<input type="text" name="name" placeholder="Username" required/>
+					<input type="text" id="name" name="name" placeholder="Name" required/>
 					<label>密码</label>
-					<input type="text" name="password" placeholder="Password" required />
+					<input type="text" id="password" name="password" placeholder="Password" required />
 					<label>申请开始时间</label>
 					<input type="date" id="startDate" name="startDate" placeholder="stratDate" onblur="getDate()" required/>
 					<label>申请结束时间</label>
