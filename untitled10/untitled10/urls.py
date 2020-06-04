@@ -17,17 +17,16 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path
 
-from .dericLeung import login_check, getavailableres
+from .dericLeung import login_check, getavailableres,searchres,resourcemanage
 from .formAction import del_user, get_booking_table, add_user
 from .lym_database import getMyApplication, getPersonalInformation
-from .staticView import myResource, roomclass, manage, adddel, index, borrowableTable, fillTable, login, add, dell, \
+from .staticView import  roomclass, manage, adddel, index, borrowableTable, fillTable, login, add, dell, \
     cancel_reserver, notice, myApplication, personal_information, my_resource, else_notice
 from .zxl import cancel_detail,detail
 from .ls_database import registered
 urlpatterns = [
     url(r'^$',index),
     url(r'^index$',index),
-    url(r'^myresource$',myResource),#资源管理
     url(r'^roomclass$', roomclass),#查询可借资源的选择分类
     url(r'^manage$', manage),#个人中心
     url(r'^adddel$', adddel),#人事管理
@@ -43,13 +42,14 @@ urlpatterns = [
     #url(r'^personal_information$', personal_information),#信息查看
     url(r'^my_resource$', my_resource),#通知界面中我的资源
     url(r'^else_notice$',else_notice ),#通知界面中其他资源
-    url(r'^cancel$', cancel_detail),#取消预约
+
     #POST
     url(r'^login_check$', login_check),
     url(r'^del_user$', del_user),
     url(r'^get_booking_table$',get_booking_table),#booking_table界面中POST
     url(r'^add_user$',add_user),#添加账户POST
 
+    url(r'^searchres/$',searchres),
     #url(r'^get_resManagement_Info$', get_resManagement_Info),#资源管理POST 错了，没写完
 
     #GET
@@ -59,5 +59,7 @@ urlpatterns = [
     url(r'^personal_information/$',getPersonalInformation),#个人信息查看数据获取
     url(r'^else_get/$',else_notice),#消息是否已读获取
     url(r'^my_res/$',my_resource),#我的资源是数据获取
-    url(r'^person_add/$',registered)#注册账户
+    url(r'^person_add/$',registered),#注册账户
+    url(r'^myresource/$', resourcemanage),  # 资源管理
+    url(r'^cancel/$', cancel_detail),#取消预约
 ]
