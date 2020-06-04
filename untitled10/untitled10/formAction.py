@@ -11,12 +11,12 @@ def del_user(request):
         return HttpResponse("usercode : "+ usercode)
 def add_user(request):
     if(request.method=='POST'):
-        usercode = request.POST.get("usercode")
+        username = request.POST.get("userName")
         name = request.POST.get("name")
         password = request.POST.get("password")
         startDate = request.POST.get("startDate")
         endDate = request.POST.get("endDate")
-        return HttpResponse("usercode:" + usercode + ";name:" + name + ";password:" + password + ";startDate:"
+        return HttpResponse("userName:" + username + ";name:" + name + ";password:" + password + ";startDate:"
                             + startDate + ";endDate:" + endDate)
 def get_booking_table(request):
     if(request.method=="POST"):
