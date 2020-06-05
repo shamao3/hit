@@ -22,7 +22,7 @@ from .formAction import del_user, get_booking_table, add_user
 from .lym_database import getMyApplication, getPersonalInformation
 from .staticView import  roomclass, manage, adddel, index, borrowableTable, fillTable, login, add, dell, \
     cancel_reserver, notice, myApplication, personal_information, my_resource, else_notice
-from .zxl import cancel_detail,detail
+from .zxl import cancel_detail,detail,delete
 from .ls_database import registered
 urlpatterns = [
     url(r'^$',index),
@@ -62,4 +62,5 @@ urlpatterns = [
     url(r'^person_add/$',registered),#注册账户
     url(r'^myresource/$', resourcemanage),  # 资源管理
     url(r'^cancel/$', cancel_detail),#取消预约
+    url(r'^cancel/delete/$', delete)
 ]

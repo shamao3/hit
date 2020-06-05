@@ -30,7 +30,7 @@ def getmyRes(page='1',id=None):#分页函数
         with connection.cursor() as cursor:#读取数据
 
             sql = 'SELECT a.name,b.state,b.id from userModel_resource a,userModel_record b where a.id=b.resource_id ' \
-                  'and (b.state="预约成功" or b.state="预约中") and b.user_id ='+id
+                  'and (b.state="预约成功" or b.state="处理中") and b.user_id ='+id
             cursor.execute(sql)
             result = cursor.fetchall()
             res = []
@@ -65,3 +65,12 @@ def cancel_detail(request):
     a = str(request.session.get('userid', ''))
     result, size = getmyRes(page=page, id=a)#页面数据和总页面数量列表
     return render(request, './cancel_reserve.html', {'username': username, 'size': size, 'resource': result})
+def delete(request):
+    username = checksession(request)
+    if (username == False):
+        return redirect('/login')
+    id=request.GET.get('id','')
+    sql='DELETE from userModel_record where id='+str(id)
+    with connection.cursor() as cursor:
+        cursor.execute(sql)
+        return redirect('/cancel')
