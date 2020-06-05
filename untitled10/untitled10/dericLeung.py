@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import render,redirect
 from django.utils import timezone
 from datetime import date,datetime
+from .formAction import get_booking_table
 
 
 def checksession(request):
@@ -194,6 +195,28 @@ def reversestate(request):
                     cursor.execute(sql1)
                 cursor.close()
         return redirect('/myresource/?page='+thispage)
+
+def addrecord(request):
+    username = checksession(request)
+    if (username == False):
+        return redirect('/login')
+    dic=get_booking_table(request)
+    resname = request.GET.get('resid','')
+    userid=request.session.get('userid','')
+    if(resname==''):
+        return HttpResponse('ERROR')
+    else:
+        with connection.cursor() as cursor:
+            sql = 'select id from userModel_record where name = "'+ resname +'"'
+            cursor.execute(sql)
+            try:
+                id = cursor.fetchall()[0]
+                sql = 'insert into userModel_record(startdate,enddate,extras,state,resource_id,user_id)' \
+                      ' values("'+dic['beginDate']+'","'+dic['endDate']+'","'+dic['extras']+'","处理中","'+str(id)+'","'+userid+'")'
+                cursor.execute(sql)
+                return redirect('/my_res/')
+            except:
+                return HttpResponse('没有这个资源')
 
 
 
