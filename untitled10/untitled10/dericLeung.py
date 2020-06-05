@@ -186,7 +186,6 @@ def reversestate(request):
                 result=cursor.fetchall()
                 for item in result:
                     state=item[1]
-                    print(state)
                     if(state=='False'):
                         state='True'
                     else:
@@ -201,20 +200,24 @@ def addrecord(request):
     if (username == False):
         return redirect('/login')
     dic=get_booking_table(request)
-    resname = request.GET.get('resid','')
+    resname = request.GET.get('name','')
     userid=request.session.get('userid','')
     if(resname==''):
         return HttpResponse('ERROR')
     else:
         with connection.cursor() as cursor:
-            sql = 'select id from userModel_record where name = "'+ resname +'"'
+            sql = 'select id from userModel_resource where name = "'+ resname +'"'
+            print(resname)
             cursor.execute(sql)
             try:
-                id = cursor.fetchall()[0]
+                id = cursor.fetchall()
+                print(id[0][0])
                 sql = 'insert into userModel_record(startdate,enddate,extras,state,resource_id,user_id)' \
-                      ' values("'+dic['beginDate']+'","'+dic['endDate']+'","'+dic['extras']+'","处理中","'+str(id)+'","'+userid+'")'
+                      ' values("'+str(dic['beginDate'])+'","'+str(dic['endDate'])+'","'+dic['extras']+'","处理中","'+str(id[0][0])+'","'+str(userid)+'")'
+                print(sql)
                 cursor.execute(sql)
-                return redirect('/my_res/')
+                cursor.close()
+                return redirect('/my_application/')
             except:
                 return HttpResponse('没有这个资源')
 

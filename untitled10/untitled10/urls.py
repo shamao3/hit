@@ -17,7 +17,7 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path
 
-from .dericLeung import login_check, getavailableres,searchres,resourcemanage,reversestate
+from .dericLeung import login_check, getavailableres,searchres,resourcemanage,reversestate,addrecord
 from .formAction import del_user, get_booking_table, add_user
 from .lym_database import getMyApplication, getPersonalInformation
 from .staticView import  roomclass, manage, adddel, index, borrowableTable, fillTable, login, add, dell, \
@@ -34,7 +34,6 @@ urlpatterns = [
     url(r'^add$', add),#添加账户 post，迟点在做
     url(r'^dell$', dell),#删除账户
 
-    url(r'^filltable$', fillTable),#预约填表
     url(r'^login$', login),#登录
     #url(r'^cancel$', cancel_reserver),#取消预约
 
@@ -47,13 +46,14 @@ urlpatterns = [
     #POST
     url(r'^login_check$', login_check),
     url(r'^del_user$', del_user),
-    url(r'^get_booking_table$',get_booking_table),#booking_table界面中POST
+    url(r'^get_booking_table/$',addrecord),#booking_table界面中POST
     url(r'^add_user$',add_user),#添加账户POST
 
     url(r'^searchres/$',searchres),
     #那个我写了
 
     #GET
+    url(r'^filltable/$', fillTable),#预约填表
     url(r'^borrowable/$', getavailableres),#可预约资源
     url(r'^detail/$', detail),#预约详情
     url(r'^my_application/$',getMyApplication),#我的申请数据获取

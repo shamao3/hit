@@ -64,10 +64,10 @@
 
 		<div class="wrapper">
 		<div class="w3ls-form">
-				<form action="/get_booking_table" method="post" >
+				<form action="/get_booking_table/?name={{name}}" method="post" >
 					{%csrf_token%}
 					<label>课室号</label>
-					<input type="text" name="roomname" placeholder="roomname" required/>
+					<input type="text" name="roomname" placeholder="roomname" value="{{name}}" required/>
 					<label>申请开始时间</label>
 					<input type="date" id="beginDate" name="beginDate" placeholder="beginDate" onblur="getmin()" required/>
 					<label>申请结束事件</label>
