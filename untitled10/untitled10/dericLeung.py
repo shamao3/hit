@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import render,redirect
 from django.utils import timezone
 from datetime import date,datetime
+from .formAction import get_booking_table
 
 
 def checksession(request):
@@ -99,23 +100,20 @@ def isDate(str):
         datetime.strptime(str,"%Y-%m-%d")
         return True
     except:
-        print(str)
         return False
 
 def getAvaRes(type,page,time='now',place=''):#两个都是string
     with connection.cursor() as cursor:
         sql=''
-        print(time)
         if(place==''):
-            sql = 'SELECT name FROM userModel_record a, userModel_resource b WHERE a.resource_id = b.id and b.type = "'+ type +'" and b.isavailable = "true"' \
+            sql = 'SELECT name FROM userModel_record a, userModel_resource b WHERE a.resource_id = b.id and b.type = "'+ type +'" and b.isavailable = "True"' \
                   'and b.id not in (SELECT resource_id FROM userModel_record where startdate <= date("'+time+'") and enddate>=date("'+time+'") and state = "预约成功")'
         else:
-            sql= 'SELECT name FROM userModel_record a, userModel_resource b WHERE a.resource_id = b.id and b.type = "'+ type +'" and b.isavailable = "true"' \
+            sql= 'SELECT name FROM userModel_record a, userModel_resource b WHERE a.resource_id = b.id and b.type = "'+ type +'" and b.isavailable = "True"' \
                   'and b.id not in (SELECT resource_id FROM userModel_record where startdate <= date("'+time+'") and enddate>=date("'+time+'") and state = "预约成功") ' \
                 'and b.location="'+place+'"'
         cursor.execute(sql)
         result = cursor.fetchall()
-        print(result)
         res=[]
         for i in range(0,len(result)):
             tempdic={'id':i+1,'name':result[i][0]}
@@ -142,7 +140,7 @@ def resourcemanage(request):
     id=str(request.session.get('userid',''))
     result,size = getmyres(page=page,id=id)
 
-    return render(request,'./resource_management.html',{'username':username,'size':size,'resource':result})
+    return render(request,'./resource_management.html',{'username':username,'size':size,'resource':result,'page':page})
 
 def getmyres(page='1',id=None):
     if(id==None):
@@ -153,17 +151,14 @@ def getmyres(page='1',id=None):
         with connection.cursor() as cursor:
             cursor.execute(sql)
             result = cursor.fetchall()
-            print(id)
-            print(result)
             res=[]
             for index in range(0, len(result)):
                 tempdic={'id':index+1, 'name':result[index][0]}
-                if(result[index][1]):
+                if(result[index][1]=='True'):
                     tempdic['state']='可借用'
                 else:
                     tempdic['state']='不可借用'
                 res.append(tempdic)
-            print(res)
             size = len(result)//7+1
             pages={}
             for i in range(0,size):
@@ -173,7 +168,58 @@ def getmyres(page='1',id=None):
                     endindex=len(res)
                 tempgroup=res[beginindex:endindex]
                 pages[str(i+1)]=tempgroup
-            print(pages)
             return pages.get(page,'1'),range(1,size+1)
         return []
+
+def reversestate(request):
+    if(request.method=='POST'):
+        changeitems=request.POST.getlist('shift',[])
+        thispage=request.GET.get('page','')
+        sqlread = 'select id,isavailable from userModel_resource'
+        if(len(changeitems)!=0):
+            sqlread+=' where id in ('
+            for id in changeitems:
+                sqlread+=' '+id+','
+            sqlread=sqlread[:-1]+')'
+            with connection.cursor() as cursor:
+                cursor.execute(sqlread)
+                result=cursor.fetchall()
+                for item in result:
+                    state=item[1]
+                    print(state)
+                    if(state=='False'):
+                        state='True'
+                    else:
+                        state='False'
+                    sql1 = 'update userModel_resource set isavailable= "'+str(state)+'" where id = '+ str(item[0])
+                    cursor.execute(sql1)
+                cursor.close()
+        return redirect('/myresource/?page='+thispage)
+
+def addrecord(request):
+    username = checksession(request)
+    if (username == False):
+        return redirect('/login')
+    dic=get_booking_table(request)
+    resname = request.GET.get('resid','')
+    userid=request.session.get('userid','')
+    if(resname==''):
+        return HttpResponse('ERROR')
+    else:
+        with connection.cursor() as cursor:
+            sql = 'select id from userModel_record where name = "'+ resname +'"'
+            cursor.execute(sql)
+            try:
+                id = cursor.fetchall()[0]
+                sql = 'insert into userModel_record(startdate,enddate,extras,state,resource_id,user_id)' \
+                      ' values("'+dic['beginDate']+'","'+dic['endDate']+'","'+dic['extras']+'","处理中","'+str(id)+'","'+userid+'")'
+                cursor.execute(sql)
+                return redirect('/my_res/')
+            except:
+                return HttpResponse('没有这个资源')
+
+
+
+
+
 

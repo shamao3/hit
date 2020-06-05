@@ -84,9 +84,9 @@
             </tbody>
         </table>
         <div class="page-select">
-            <div class="page selected" id="page1">1</div>
-            <div class="page" id="page2">2</div>
-            <div class="page" id="page3">3</div>
+            {% for item in size %}
+				<div class="page" id="page1"><a href="/my_application/?page={{item}}"> {{item}} </a></div>
+				{% endfor %}
         </div>
     </div>
 </div>
@@ -120,7 +120,7 @@
     /* page-select */
     .application-content .page-select{
         width:600px;
-        margin:300px auto;
+        margin:100px auto;
         text-align: center;
     }
     .application-content .page-select .page{

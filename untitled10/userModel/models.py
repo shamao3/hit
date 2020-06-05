@@ -16,8 +16,8 @@ class UserRelationship(models.Model):
 class Resource(models.Model):
     name = models.CharField(max_length=20)
     type = models.CharField(max_length=20)
-    isavailable = models.BooleanField(default=False)
-    isborrowed = models.BooleanField(default=False)
+    isavailable = models.CharField(max_length=20)
+    isborrowed = models.CharField(max_length=20)
     location = models.CharField(max_length=20)
 
 class ResourceBelonging(models.Model):
