@@ -17,7 +17,7 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path
 
-from .dericLeung import login_check, getavailableres,searchres,resourcemanage
+from .dericLeung import login_check, getavailableres,searchres,resourcemanage,reversestate
 from .formAction import del_user, get_booking_table, add_user
 from .lym_database import getMyApplication, getPersonalInformation
 from .staticView import  roomclass, manage, adddel, index, borrowableTable, fillTable, login, add, dell, \
@@ -51,7 +51,7 @@ urlpatterns = [
     url(r'^add_user$',add_user),#添加账户POST
 
     url(r'^searchres/$',searchres),
-    #url(r'^get_resManagement_Info$', get_resManagement_Info),#资源管理POST 错了，没写完
+    #那个我写了
 
     #GET
     url(r'^borrowable/$', getavailableres),#可预约资源
@@ -62,5 +62,6 @@ urlpatterns = [
     url(r'^my_resource/$',my_res),#我的资源是数据获取
     url(r'^person_add/$',registered),#注册账户
     url(r'^myresource/$', resourcemanage),  # 资源管理
+    url(r'^changestate/$', reversestate),
     url(r'^cancel/$', cancel_detail),#取消预约
 ]
