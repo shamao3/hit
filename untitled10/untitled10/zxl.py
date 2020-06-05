@@ -46,7 +46,7 @@ def getmyRes(page='1',id=None):#分页函数
                     # 修改了对象之后，之前append过的对象也会发生变化。改进：使用copy
                     i += 1
                     print(res)
-            size=len(result)//7+1#得到数据量
+            size=(len(result)-1)//7+1#得到数据量
             pages={}
             for i in range(0,size):
                 beginindex = 7 * i#一页中的开始

@@ -118,7 +118,7 @@ def getAvaRes(type,page,time='now',place=''):#两个都是string
         for i in range(0,len(result)):
             tempdic={'id':i+1,'name':result[i][0]}
             res.append(tempdic)
-        size = len(res)//7+1
+        size = (len(res)-1)//7+1
         resdic={}
         for i in range(0,size):
             beginindex=i*7
@@ -159,7 +159,7 @@ def getmyres(page='1',id=None):
                 else:
                     tempdic['state']='不可借用'
                 res.append(tempdic)
-            size = len(result)//7+1
+            size = (len(result)-1)//7+1
             pages={}
             for i in range(0,size):
                 beginindex=7*i

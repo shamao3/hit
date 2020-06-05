@@ -29,7 +29,7 @@ def getMyApp(page='1',id=None):
                     res.append(temp.copy())
                     num+=1
                     print(res)
-            size=len(result)//7+1
+            size=(len(result)-1)//7+1
             pages = {}
             for i in range(0, size):
                 beginindex = 7 * i  # 一页中的开始
