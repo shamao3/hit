@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="../static/css/normalize.css">
 	<link rel="stylesheet" href="../static/css/common.css">
 	<link rel="stylesheet" href="../static/css/main.css">
+
 	<link rel="stylesheet" type="text/css" href="../static/css/room_operate.css">
 </head>
 <body>
@@ -59,7 +60,7 @@
 				<span class="item-info">退出</span>
 			</a>
 		</nav>
-		<div class="reservecontent">
+		<div class="reserve-content">
 			<table id="reserve_record">
 				<tbody>
 					<tr>
@@ -68,7 +69,7 @@
 						<th>状态</th>
 						<th>取消</th>
 					</tr>
-					{% for i in detail %}
+					{% for i in resource %}
 						<tr>
 							<td>{{i.num}}</td>
 							<td>{{i.name}}</td>
@@ -122,14 +123,15 @@
 <!--						<td><button class="cancel_button">取消</button></td>-->
 <!--					</tr>-->
 
->>>>>>>>> Temporary merge branch 2
 				</tbody>
 			</table>
-			<div class="pageselect">
-				<div class="page selected" id="page1">1</div>
-				<div class="page" id="page2">2</div>
-
-				<button class="cancel_button">返回</button>
+			<div class="page-select">
+				{% for item in size %}
+				<div class="page" id="page1"><a href="/cancel/?page={{item}}"> {{item}} </a></div>
+<!--				<div class="page selected" id="page1">1</div>-->
+<!--				<div class="page" id="page2">2</div>-->
+				{% endfor %}
+				<button class="cancel_button" onclick="location.href='my_application/'">返回</button>
 			</div>
 		</div>
 	</div>

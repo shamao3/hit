@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<--梁逸聪 ， 借用-->
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -42,11 +41,11 @@
 				<span class="iconfont">&#xe64a;</span>
 				<span class="item-info">取消预约</span>
 			</a>
-			<a href="/borrowable" class="nav-item" id="nav-item5">
+			<a href="/roomclass" class="nav-item" id="nav-item5">
 				<span class="iconfont">&#xe751;</span>
 				<span class="item-info">可借教室</span>
 			</a>
-			<a href="/myresource" class="nav-item" id="nav-item6">
+			<a href="/myresource/?page=1" class="nav-item" id="nav-item6">
 				<span class="iconfont">&#xe610;</span>
 				<span class="item-info" style="display: none;">我的资源</span>
 			</a>
@@ -62,12 +61,13 @@
 			</a>
 		</nav>
 
-		<form>
+		<form action="/searchres/?type={{type}}&page=1" method="post">
+			{% csrf_token %}
 		<div class="search-box" >
 			<label ><b>输入搜索关键词：</b></label>
-        <input type="text" placeholder=" " name="query"/><span></span>
+        <input type="text" placeholder="日期格式yyyy-mm-dd,日期地址用空格分隔开" name="query"/><span></span>
     </div>
-			<input type="submit" value="查询" placeholder="日期格式yyyy-mm-dd,日期地址用空格分隔开">
+			<button>查询</button>
 	</form>
 
 
@@ -93,8 +93,9 @@
 				</tbody>
 			</table>
 			<div class="page-select">
-				<div class="page selected" id="page1">1</div>
-				<div class="page" id="page2">2</div>
+				{% for i in size %}
+				<div class="page" id="page1"><a href="/borrowable/?type={{type}}&page={{i}}"> 1</a></div>
+				{% endfor %}
 			</div>
 		</div>
 	</div>
