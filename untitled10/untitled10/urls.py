@@ -23,7 +23,7 @@ from .lym_database import getMyApplication, getPersonalInformation
 from .staticView import  roomclass, manage, adddel, index, borrowableTable, fillTable, login, add, dell, \
     cancel_reserver, notice, myApplication, personal_information, my_resource, else_notice
 from .zxl import cancel_detail,detail
-from .ls_database import registered
+from .ls_database import registered,delete
 urlpatterns = [
     url(r'^$',index),
     url(r'^index$',index),
@@ -48,7 +48,8 @@ urlpatterns = [
     url(r'^del_user$', del_user),
     url(r'^get_booking_table$',get_booking_table),#booking_table界面中POST
     url(r'^add_user$',add_user),#添加账户POST
-
+    url(r'^registered$',registered),#添加账户
+    url(r'^delete$',delete),#注销账户
     url(r'^searchres/$',searchres),
     #那个我写了
 
