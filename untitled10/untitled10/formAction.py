@@ -31,12 +31,7 @@ def get_booking_table(request):
     if(request.method=="POST"):
         roomname=request.POST.get("roomname")
         beginDate=request.POST.get("beginDate")
-        beginTime=request.POST.get("beginTime")
         endDate=request.POST.get("endDate")
-        endTime=request.POST.get("endTime")
         extras=request.POST.get("extras")
-        return HttpResponse(
-            "roomname:" + roomname + ";beginDate:" + beginDate + ";beginTime:" +
-            beginTime + ";endDate:" + endDate + ";endTime:" + endTime+
-            ";extras:" + extras)
+        return {'roomname':roomname,'beginDate':beginDate,'endDate':endDate,'extras':extras}
 
