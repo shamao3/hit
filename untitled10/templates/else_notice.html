@@ -65,23 +65,22 @@
                 <th>通知内容</th><!--通知内容-->
                 <th>是否已读</th><!--判断是否已读-->
             </tr>
-            {% for i in applicationData %}
+            {% for i in notice %}
             <tr>
                 <th>{{i.num}}</th>
                 <th>{{i.text}}</th>
                 <th>{{i.isread}}</th>
             </tr>
-            <tr>
-                <th>{{i.num}}</th>
-                <th>{{i.text}}</th>
-                <th>{{i.isread}}</th>
-            </tr>
+            {% endfor %}
             </tbody>
         </table>
         <div class="page-select">
             <div class="page selected" id="page1">1</div>
             <div class="page" id="page2">2</div>
             <div class="page" id="page3">3</div>
+        </div>
+        <div>
+            <button class="login-btn">返回</button>
         </div>
     </div>
 </div>

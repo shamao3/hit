@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import render,redirect
 from django.utils import timezone
 from datetime import date,datetime
+from .formAction import get_booking_table
 
 
 def checksession(request):
@@ -117,7 +118,7 @@ def getAvaRes(type,page,time='now',place=''):#两个都是string
         for i in range(0,len(result)):
             tempdic={'id':i+1,'name':result[i][0]}
             res.append(tempdic)
-        size = len(res)//7+1
+        size = (len(res)-1)//7+1
         resdic={}
         for i in range(0,size):
             beginindex=i*7
@@ -158,7 +159,7 @@ def getmyres(page='1',id=None):
                 else:
                     tempdic['state']='不可借用'
                 res.append(tempdic)
-            size = len(result)//7+1
+            size = (len(result)-1)//7+1
             pages={}
             for i in range(0,size):
                 beginindex=7*i
@@ -185,7 +186,6 @@ def reversestate(request):
                 result=cursor.fetchall()
                 for item in result:
                     state=item[1]
-                    print(state)
                     if(state=='False'):
                         state='True'
                     else:
@@ -194,6 +194,32 @@ def reversestate(request):
                     cursor.execute(sql1)
                 cursor.close()
         return redirect('/myresource/?page='+thispage)
+
+def addrecord(request):
+    username = checksession(request)
+    if (username == False):
+        return redirect('/login')
+    dic=get_booking_table(request)
+    resname = request.GET.get('name','')
+    userid=request.session.get('userid','')
+    if(resname==''):
+        return HttpResponse('ERROR')
+    else:
+        with connection.cursor() as cursor:
+            sql = 'select id from userModel_resource where name = "'+ resname +'"'
+            print(resname)
+            cursor.execute(sql)
+            try:
+                id = cursor.fetchall()
+                print(id[0][0])
+                sql = 'insert into userModel_record(startdate,enddate,extras,state,resource_id,user_id)' \
+                      ' values("'+str(dic['beginDate'])+'","'+str(dic['endDate'])+'","'+dic['extras']+'","处理中","'+str(id[0][0])+'","'+str(userid)+'")'
+                print(sql)
+                cursor.execute(sql)
+                cursor.close()
+                return redirect('/my_application/')
+            except:
+                return HttpResponse('没有这个资源')
 
 
 

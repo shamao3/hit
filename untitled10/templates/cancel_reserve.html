@@ -74,7 +74,7 @@
 							<td>{{i.num}}</td>
 							<td>{{i.name}}</td>
 							<td>{{i.state}}</td>
-							<td><button class="cancel_button">取消</button></td>
+							<td><button class="cancel_button" onclick="location.href='delete/?id={{i.id}}'" >取消</button></td>
 						</tr>
 					{% endfor %}
 <!--					<tr>-->
@@ -131,7 +131,7 @@
 <!--				<div class="page selected" id="page1">1</div>-->
 <!--				<div class="page" id="page2">2</div>-->
 				{% endfor %}
-				<button class="cancel_button" onclick="location.href='my_application/'">返回</button>
+				<button class="cancel_button" onclick="location.href='/index'">返回</button>
 			</div>
 		</div>
 	</div>

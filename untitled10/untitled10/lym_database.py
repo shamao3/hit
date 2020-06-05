@@ -5,36 +5,49 @@ from django.shortcuts import render, redirect
 from .dericLeung import checksession
 
 
+def getMyApp(page='1',id=None):
+    if (id == None):
+        return []
+    else:
+
+        with connection.cursor() as cursor:
+            sql='SELECT b.name,a.startdate,a.extras,a.id FROM userModel_record a,userModel_resource b WHERE ' \
+            'a.resource_id=b.id and a.user_id='+id
+        # sql='SELECT * FROM userModel_user where id='+str(a)
+            cursor.execute(sql)
+            result = cursor.fetchall()
+            res=[]
+            num=1
+            if(len(result)!=0):
+                for j in result:
+                    temp = {}
+                    temp['num'] = num
+                    temp['date'] = j[1]
+                    temp['resource'] = j[0]
+                    temp['content'] = j[2]
+                    temp['id']=j[3]
+                    res.append(temp.copy())
+                    num+=1
+                    print(res)
+            size=(len(result)-1)//7+1
+            pages = {}
+            for i in range(0, size):
+                beginindex = 7 * i  # 一页中的开始
+                endindex = 7 * (i + 1)  # 一页中的结束
+                if (endindex > len(res)):  # 若超出数据量则将最后的数据作为一页的最后
+                    endindex = len(res)
+                tempgroup = res[beginindex:endindex]  # 将第i+1的数据装入tempgroup
+                pages[str(i + 1)] = tempgroup  # 将temp装入字典  key为i+1
+            return pages.get(page, '1'), range(1, size + 1)  # 返回key为page的value和总页面数量数组
+        return []
 def getMyApplication(request):
     username = checksession(request)
     if (username == False):
         return redirect('/login')
-    a=request.session.get('userid', '')
-    print (a)
-    with connection.cursor() as cursor:
-        sql='SELECT b.name,a.startdate,a.extras,a.id FROM userModel_record a,userModel_resource b WHERE ' \
-            'a.resource_id=b.id and a.user_id='+str(a)
-        # sql='SELECT * FROM userModel_user where id='+str(a)
-        cursor.execute(sql)
-        result = cursor.fetchall()
-        res=[]
-
-        num=1
-        if(len(result)!=0):
-            for j in result:
-                temp = {}
-                temp['num'] = num
-                temp['date'] = j[1]
-                temp['resource'] = j[0]
-                temp['content'] = j[2]
-                temp['id']=j[3]
-                res.append(temp.copy())
-                num+=1
-            return render(request,'./my_application.html',{'applicationData':res})
-        else :
-            return HttpResponse("ERROR")
-
-
+    page = request.GET.get('page', '1')
+    a = str(request.session.get('userid', ''))
+    result, size = getMyApp(page=page, id=a)
+    return render(request, './my_application.html', {'username': username, 'size': size, 'applicationData': result,'page':page})
 def getPersonalInformation(request):
     username = checksession(request)
     if (username == False):

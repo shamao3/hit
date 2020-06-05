@@ -54,7 +54,8 @@ def fillTable(request):
     username=checksession(request)
     if(username==False):
         return redirect('/login')
-    return render(request,"./booking_table.html",{'username':username})
+    name = request.GET.get('name','')
+    return render(request,"./booking_table.html",{'username':username,'name':name})
 def login(request):
     return render(request,"./login.html")
 def cancel_reserver(request):
