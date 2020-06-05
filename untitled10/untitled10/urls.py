@@ -42,7 +42,7 @@ urlpatterns = [
     #url(r'^personal_information$', personal_information),#信息查看
     url(r'^my_resource$', my_resource),#通知界面中我的资源
     url(r'^else_notice$',else_notice ),#通知界面中其他资源
-    url(r'^cancel$', cancel_detail),#取消预约
+
     #POST
     url(r'^login_check$', login_check),
     url(r'^del_user$', del_user),
@@ -62,4 +62,5 @@ urlpatterns = [
     url(r'^person_add/$',registered),#注册账户
     url(r'^myresource/$', resourcemanage),  # 资源管理
     url(r'^changestate/$', reversestate)
+    url(r'^cancel/$', cancel_detail),#取消预约
 ]

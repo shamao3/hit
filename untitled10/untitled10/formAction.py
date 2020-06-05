@@ -1,4 +1,6 @@
 from django.http import HttpResponse
+from django.db import connection,models
+
 def login_check(request):
     if(request.method=='POST'):
         username=request.POST.get("username")
@@ -8,6 +10,7 @@ def login_check(request):
 def del_user(request):
     if(request.method=='POST'):
         usercode=request.POST.get("usercode")
+
         return HttpResponse("usercode : "+ usercode)
 def add_user(request):
     if(request.method=='POST'):
@@ -16,8 +19,14 @@ def add_user(request):
         password = request.POST.get("password")
         startDate = request.POST.get("startDate")
         endDate = request.POST.get("endDate")
-        return HttpResponse("userName:" + username + ";name:" + name + ";password:" + password + ";startDate:"
-                            + startDate + ";endDate:" + endDate)
+        cursor = connection.cursor()
+        cursor.execute(
+            'Insert into userModel_user(name,userName,password,privilige,startdate,enddate) values("username","name","password","privilige","startDate","endDate") ')
+        names = [row[0] for row in cursor.fetchall()]
+        connection.close
+        return HttpResponse("添加成功！")
+        # return HttpResponse("userName:" + username + ";name:" + name + ";password:" + password + ";startDate:"
+        #                     + startDate + ";endDate:" + endDate)
 def get_booking_table(request):
     if(request.method=="POST"):
         roomname=request.POST.get("roomname")

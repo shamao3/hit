@@ -25,7 +25,7 @@
 		<h1>删除账户</h1>
 		<div class="wrapper">
 			<div class="w3ls-form">
-				<form action="/del_user" method="post">
+				<form action="/delete" method="post">
 					{%csrf_token%}
 					<label>账户</label>
 					<input type="text" name="usercode" placeholder="Username" required/>
