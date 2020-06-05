@@ -71,21 +71,14 @@
             </tr>
             {% for i in my_res %}
             <tr>
-                <td>{{my_res.num}}</td><!--申请id-->
-                <td>{{my_res.date}}</td><!--项目日期-->
-                <td>{{my_res.location}}</td><!--申请教室-->
-                <td>{{my_res.extras}}</td><!--理由-->
-                <td>{{my_res.user_id}}</td><!--申请人-->
+                <td>{{i.num}}</td><!--申请id-->
+                <td>{{i.date}}</td><!--项目日期-->
+                <td>{{i.location}}</td><!--申请教室-->
+                <td>{{i.extras}}</td><!--理由-->
+                <td>{{i.user_id}}</td><!--申请人-->
                 <td><a>同意</a>/<a>不同意</a></td>
             </tr>
-            <tr>
-                   <td>{{my_res.num}}</td><!--申请id-->
-                <td>{{my_res.date}}</td><!--项目日期-->
-                <td>{{my_res.location}}</td><!--申请教室-->
-                <td>{{my_res.extras}}</td><!--理由-->
-                <td>{{my_res.user_id}}</td><!--申请人-->
-                <td><a>同意</a>/<a>不同意</a></td>
-            </tr>
+            {% endfor %}
             </tbody>
         </table>
         <div class="page-select">
