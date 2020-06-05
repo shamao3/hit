@@ -24,6 +24,7 @@ from .staticView import  roomclass, manage, adddel, index, borrowableTable, fill
     cancel_reserver, notice, myApplication, personal_information, my_resource, else_notice
 from .zxl import cancel_detail,detail
 from .ls_database import registered
+from .wjjDatabase import else_get,my_res
 urlpatterns = [
     url(r'^$',index),
     url(r'^index$',index),
@@ -40,8 +41,8 @@ urlpatterns = [
     url(r'^notice$', notice),#通知主页面
     #url(r'^my_application$', myApplication),#我的申请
     #url(r'^personal_information$', personal_information),#信息查看
-    url(r'^my_resource$', my_resource),#通知界面中我的资源
-    url(r'^else_notice$',else_notice ),#通知界面中其他资源
+    # url(r'^my_resource$', my_resource),#通知界面中我的资源
+    # url(r'^else_notice$',else_notice ),#通知界面中其他资源
 
     #POST
     url(r'^login_check$', login_check),
@@ -57,8 +58,8 @@ urlpatterns = [
     url(r'^detail/$', detail),#预约详情
     url(r'^my_application/$',getMyApplication),#我的申请数据获取
     url(r'^personal_information/$',getPersonalInformation),#个人信息查看数据获取
-    url(r'^else_get/$',else_notice),#消息是否已读获取
-    url(r'^my_res/$',my_resource),#我的资源是数据获取
+    url(r'^else_notice/$',else_get),#消息是否已读获取
+    url(r'^my_resource/$',my_res),#我的资源是数据获取
     url(r'^person_add/$',registered),#注册账户
     url(r'^myresource/$', resourcemanage),  # 资源管理
     url(r'^changestate/$', reversestate),
