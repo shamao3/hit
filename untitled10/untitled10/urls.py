@@ -61,6 +61,6 @@ urlpatterns = [
     url(r'^my_res/$',my_resource),#我的资源是数据获取
     url(r'^person_add/$',registered),#注册账户
     url(r'^myresource/$', resourcemanage),  # 资源管理
-    url(r'^changestate/$', reversestate)
+    url(r'^changestate/$', reversestate),
     url(r'^cancel/$', cancel_detail),#取消预约
 ]
