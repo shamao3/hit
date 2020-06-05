@@ -61,7 +61,7 @@
 		</nav>
 		<div class="reserve-content">
 			<button onclick="swapCheck()">全选</button>
-			<form action="/get_resManagement-Info" method="post">
+			<form action="/changestate/?page={{page}}" method="post">
 			<table id="reserve_record">
 
 				<tbody id="tbody">
@@ -77,7 +77,7 @@
 						<td>{{item.id}}</td>
 						<td>{{item.name}}</td>
 						<td>{{item.state}}</td>
-						<td><input type="checkbox" name="shift" value="shift" ></td>
+						<td><input type="checkbox" name="shift" value="{{item.id}}" ></td>
 					</tr>
 				{% endfor %}
 				</tbody>
