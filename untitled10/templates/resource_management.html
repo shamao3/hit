@@ -61,7 +61,11 @@
 		</nav>
 		<div class="reserve-content">
 			<button onclick="swapCheck()">全选</button>
+			{% if isroot == 'false' %}
 			<form action="/changestate/?page={{page}}" method="post">
+			{% else %}
+			<form action="/del_resource" method="post">
+			{% endif %}
 			<table id="reserve_record">
 
 				<tbody id="tbody">
@@ -82,7 +86,11 @@
 				{% endfor %}
 				</tbody>
 			</table>
+				{% if isroot == 'false' %}
 				<input type="submit" name="submit" value="更改" />
+				{% else %}
+				<input type="submit" name="submit" value="删除" />
+				{% endif %}
 			</form>
 			<div class="page-select">
 				{% for item in size %}
@@ -92,8 +100,9 @@
 
 
 			<!--根用户才有的权限-->
-			<button value="添加/删除资源" class="newbutton">添加/删除资源</button>
-
+			{% if isroot == 'true' %}
+			<button value="添加/删除资源" class="newbutton">添加资源</button>
+			{% endif %}
 		</div>
 
 	</div>

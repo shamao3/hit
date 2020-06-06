@@ -138,40 +138,48 @@ def resourcemanage(request):
         return redirect('/login')
     page=request.GET.get('page','1')
     id=str(request.session.get('userid',''))
-    result,size = getmyres(page=page,id=id)
 
-    return render(request,'./resource_management.html',{'username':username,'size':size,'resource':result,'page':page})
+    isroot='false'
+    if(id=='1'):
+        isroot='true'
+    result,size = getmyres(page=str(page),id=id)
+    return render(request,'./resource_management.html',{'isroot':isroot,'username':username,'size':size,'resource':result,'page':page})
 
 def getmyres(page='1',id=None):
-    if(id==None):
-        return []
+    if(id=='1'):
+        sql = 'select name,isavailable from userModel_resource a ,userModel_resourcebelonging b ' \
+              'where a.id=b.resource_id'
+
     else:
         sql = 'select name,isavailable from userModel_resource a ,userModel_resourcebelonging b ' \
               'where a.id=b.resource_id and b.owner_id='+id
-        with connection.cursor() as cursor:
-            cursor.execute(sql)
-            result = cursor.fetchall()
-            res=[]
-            for index in range(0, len(result)):
-                tempdic={'id':index+1, 'name':result[index][0]}
-                if(result[index][1]=='True'):
-                    tempdic['state']='可借用'
-                else:
-                    tempdic['state']='不可借用'
-                res.append(tempdic)
-            size = (len(result)-1)//7+1
-            pages={}
-            for i in range(0,size):
-                beginindex=7*i
-                endindex=7*(i+1)
-                if(endindex>len(res)):
-                    endindex=len(res)
-                tempgroup=res[beginindex:endindex]
-                pages[str(i+1)]=tempgroup
-            return pages.get(page,'1'),range(1,size+1)
-        return []
+    with connection.cursor() as cursor:
+        cursor.execute(sql)
+        result = cursor.fetchall()
+        res=[]
+        for index in range(0, len(result)):
+            tempdic={'id':index+1, 'name':result[index][0]}
+            if(result[index][1]=='True'):
+                tempdic['state']='可借用'
+            else:
+                tempdic['state']='不可借用'
+            res.append(tempdic)
+        size = (len(result)-1)//7+1
+        pages={}
+        for i in range(0,size):
+            beginindex=7*i
+            endindex=7*(i+1)
+            if(endindex>len(res)):
+                endindex=len(res)
+            tempgroup=res[beginindex:endindex]
+            pages[str(i+1)]=tempgroup
+        return pages.get(page,[]),range(1,size+1)
+    return []
 
 def reversestate(request):
+    username = checksession(request)
+    if (username == False):
+        return redirect('/login')
     if(request.method=='POST'):
         changeitems=request.POST.getlist('shift',[])
         thispage=request.GET.get('page','')
@@ -207,11 +215,9 @@ def addrecord(request):
     else:
         with connection.cursor() as cursor:
             sql = 'select id from userModel_resource where name = "'+ resname +'"'
-            print(resname)
             cursor.execute(sql)
             try:
                 id = cursor.fetchall()
-                print(id[0][0])
                 sql = 'insert into userModel_record(startdate,enddate,extras,state,resource_id,user_id)' \
                       ' values("'+str(dic['beginDate'])+'","'+str(dic['endDate'])+'","'+dic['extras']+'","处理中","'+str(id[0][0])+'","'+str(userid)+'")'
                 print(sql)
@@ -221,6 +227,36 @@ def addrecord(request):
             except:
                 return HttpResponse('没有这个资源')
 
+def addresource(request):
+    username = checksession(request)
+    if (username == False):
+        return redirect('/login')
+
+
+def delresource(request):
+    username = checksession(request)
+    if (username == False):
+        return redirect('/login')
+    if (request.method == 'POST'):
+        changeitems = request.POST.getlist('shift', [])
+        thispage = request.GET.get('page', '')
+        sqlread = 'delete from userModel_resource'
+        sql = 'delete from userModel_resourcebelonging'
+        if (len(changeitems) != 0):
+            sqlread += ' where id in ('
+            sql +=' where resource_id in('
+            for id in changeitems:
+                sql += ' ' + id + ','
+                sqlread += ' ' + id + ','
+            sqlread = sqlread[:-1] + ')'
+            sql = sql[:-1]+')'
+            with connection.cursor() as cursor:
+                cursor.execute(sql)
+                cursor.close()
+            with connection.cursor() as cursor:
+                cursor.execute(sqlread)
+                return redirect('/myresource/?page=1')
+            return HttpResponse(sqlread)
 
 
 
