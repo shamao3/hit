@@ -316,13 +316,13 @@ def addresource(request):
             with connection.cursor() as cursor:
                 sql = 'insert into userModel_resource(name,type,isavailable,isborrowed,location) values("'+ str(name) +'","'+ str(type) +'","False","false","'+ str(address) +'")'
                 print(sql)
+                cursor.execute(sql)
                 sql = 'select id from userModel_resource where name = "'+ str(name) +'"'
-                print(sql)
                 cursor.execute(sql)
                 result=cursor.fetchall()
                 if(len(result)!=0):
                     id = result[0][0]
-                    sql = 'insert into uesrModel_resourcebelonging(owner_id,resource_id) values("'+str(userid)+'","'+str(id)+'")'
+                    sql = 'insert into userModel_resourcebelonging(owner_id,resource_id) values("'+str(userid)+'","'+str(id)+'")'
                     print(sql)
                     cursor.execute(sql)
                 return redirect('/myresource/?page=1')
