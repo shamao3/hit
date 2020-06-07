@@ -75,13 +75,14 @@
             </tbody>
         </table>
         <div class="page-select">
-            <div class="page selected" id="page1">1</div>
-            <div class="page" id="page2">2</div>
-            <div class="page" id="page3">3</div>
+          {% for item in size %}
+            <div class="page" id="page1"><a href="/else_notice/?page={{item}}"> {{item}} </a></div>
+          {% endfor %}
         </div>
-        <div>
-            <button class="login-btn">返回</button>
+        <div class="button">
+            <button class="return_button" onclick="location.href='/index'">返回</button>
         </div>
+
     </div>
 </div>
 
@@ -113,7 +114,8 @@
     /* page-select */
     .else-content .page-select{
         width:600px;
-        margin:300px auto;
+		height:50px;
+        margin:10px auto;
         text-align: center;
     }
     .else-content .page-select .page{
@@ -133,4 +135,13 @@
     .res-content .page-select .page:hover{
         cursor:pointer;
     }
+    .res-content .return_button{
+		width:100px;
+        height:40px;
+		border:1px solid #ccc;
+		border-radius:20px;
+        margin-right:250px;
+        font-size:3.2rem;
+		text-align: center;
+	}
 </style>

@@ -77,7 +77,7 @@ def searchres(request):
         return redirect('/login')
     if(request.method=='POST'):
         query=request.POST.get('query','')
-        type=request.GET.get('type','')
+        type = request.GET.get('type','')
         page = request.GET.get('page', '1')
         if(query==''):
             url = "/borrowable/?type="+type
@@ -144,6 +144,27 @@ def resourcemanage(request):
         isroot='true'
     result,size = getmyres(page=str(page),id=id)
     return render(request,'./resource_management.html',{'isroot':isroot,'username':username,'size':size,'resource':result,'page':page})
+
+# def othernotice(request):
+#     username = checksession(request)
+#     if (username == False):
+#         return redirect('/login')
+#     page=request.GET.get('page','1')
+#     id=str(request.session.get('userid',''))
+#
+#     result,size = getmyres(page=str(page),id=id)
+#     return render(request,'./else_notice.html',{'username':username,'size':size,'resource':result,'page':page})
+#
+#
+# def my_res(request):
+#     username = checksession(request)
+#     if (username == False):
+#         return redirect('/login')
+#     page = request.GET.get('page', '1')
+#     id = str(request.session.get('userid', ''))
+#
+#     result, size = getmyres(page=str(page), id=id)
+#     return render(request, './else_notice.html', {'username': username, 'size': size, 'resource': result, 'page': page})
 
 def getmyres(page='1',id=None):
     if(id=='1'):
