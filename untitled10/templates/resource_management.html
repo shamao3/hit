@@ -64,7 +64,7 @@
 			{% if isroot == 'false' %}
 			<form action="/changestate/?page={{page}}" method="post">
 			{% else %}
-			<form action="/del_resource" method="post">
+			<form action="/del_resource/" method="post">
 			{% endif %}
 			<table id="reserve_record">
 
@@ -101,7 +101,7 @@
 
 			<!--根用户才有的权限-->
 			{% if isroot == 'true' %}
-			<button value="添加/删除资源" class="newbutton">添加资源</button>
+			<button value="添加资源" class="newbutton"><a href="/add_resource/">添加资源</a></button>
 			{% endif %}
 		</div>
 

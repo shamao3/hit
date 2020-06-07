@@ -256,6 +256,7 @@ def delresource(request):
             sql = sql[:-1]+')'
             sql1 = sql1[:-1] + ')'
             with connection.cursor() as cursor:
+                cursor.execute(sql1)
                 cursor.execute(sql)
                 cursor.close()
             with connection.cursor() as cursor:
@@ -264,6 +265,47 @@ def delresource(request):
             return HttpResponse(sqlread)
 
 
+def addresource(request):
+    username = checksession(request)
+    if (username == False):
+        return redirect('/login')
+    if(request.method == 'POST'):
+        name = request.POST.get('name','')
+        accountname = request.POST.get('account','')
+        type = request.POST.get('type','')
+        address = request.POST.get('address','')
+        sqlcheck = 'select id from userModel_user where username = "'+str(accountname)+'"'
+        sql = 'select id from userModel_resource where name = "' + name + '"'
+        userid=0
+        #检查用户
+        with connection.cursor() as cursor:
+            cursor.execute(sqlcheck)
+            result = cursor.fetchall()
+            if(len(result)!=0):
+                userid= result[0][0]
+            else:
+                return render(request,"./add_resource.html",{"usernamealarm":'没有这个用户',"resourcenamealarm":''})
+        #检查同名资源
+        with connection.cursor() as cursor:
+            cursor.execute(sql)
+            result = cursor.fetchall()
+            if(len(result)!=0):
+                return render(request, "./add_resource.html", {"usernamealarm": '', "resourcenamealarm": '已经有同名的资源了'})
+        if(userid!= 0):
+            with connection.cursor() as cursor:
+                sql = 'insert into userModel_resource(name,type,isavailable,isborrowed,location) values("'+ str(name) +'","'+ str(type) +'","False","false","'+ str(address) +'")'
+                print(sql)
+                sql = 'select id from userModel_resource where name = "'+ str(name) +'"'
+                print(sql)
+                cursor.execute(sql)
+                result=cursor.fetchall()
+                if(len(result)!=0):
+                    id = result[0][0]
+                    sql = 'insert into uesrModel_resourcebelonging(owner_id,resource_id) values("'+str(userid)+'","'+str(id)+'")'
+                    print(sql)
+                    cursor.execute(sql)
+                return redirect('/myresource/?page=1')
 
-
+def resadd(request):
+    return render(request,"./add_resource.html",{"usernamealarm":'',"resourcenamealarm":''})
 

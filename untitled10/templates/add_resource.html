@@ -64,19 +64,22 @@
 
 		<div class="wrapper">
 		<div class="w3ls-form">
-				<form action="/get_booking_table/?name={{name}}" method="post" >
+				<form action="/resadd/" method="post" >
 					{%csrf_token%}
-					<label>资源名称</label>
-					<input type="text" name="roomname" placeholder="roomname" value="{{name}}" required/>
-					<label>申请开始时间</label>
-					<input type="date" id="beginDate" name="beginDate" placeholder="beginDate" onblur="getmin()" required/>
-					<label>申请结束事件</label>
-					<input type="date" id="endDate" name="endDate" placeholder="endDate" onfocus="getmin()" required/>
-
-					<label>备注原因</label>
-					<input type="text" name="extras" placeholder="extras" required/>
-
-					<input type="submit" value="立刻申请！"/>
+					<label>资源名</label>
+					<input type="text" name="name" placeholder="{{resourcenamealarm}}" value="" required/>
+					<label>资源归属者账户</label>
+                    <input type="text" name="account" placeholder="{{usernamealarm}}" value="" required/>
+					<label>地址</label>
+					<input type="text" name="address" placeholder="" required/>
+                    <label>资源类型</label>
+                    <select name="type">
+                      <option value ="classroom">教室</option>
+                      <option value ="gym">体育场</option>
+                      <option value="hall">礼堂</option>
+                      <option value="store">商铺</option>
+                    </select>
+					<input type="submit" value="添加"/>
 				</form>
 		</div>
 		</div>
