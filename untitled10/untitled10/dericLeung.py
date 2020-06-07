@@ -242,14 +242,19 @@ def delresource(request):
         thispage = request.GET.get('page', '')
         sqlread = 'delete from userModel_resource'
         sql = 'delete from userModel_resourcebelonging'
+        sql1 = 'delete from userModel_record'
         if (len(changeitems) != 0):
             sqlread += ' where id in ('
             sql +=' where resource_id in('
+            sql1 += ' where resource_id in('
+
             for id in changeitems:
                 sql += ' ' + id + ','
                 sqlread += ' ' + id + ','
+                sql1+= ' ' + id + ','
             sqlread = sqlread[:-1] + ')'
             sql = sql[:-1]+')'
+            sql1 = sql1[:-1] + ')'
             with connection.cursor() as cursor:
                 cursor.execute(sql)
                 cursor.close()
