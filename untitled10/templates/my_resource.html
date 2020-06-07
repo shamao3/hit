@@ -82,10 +82,13 @@
             </tbody>
         </table>
         <div class="page-select">
-            <div class="page selected" id="page1">1</div>
-            <div class="page" id="page2">2</div>
-            <div class="page" id="page3">3</div>
-        </div>
+			{% for item in size %}
+			<div class="page" id="page1"><a href="/my_resource/?page={{item}}"> {{item}} </a></div>
+			{% endfor %}
+		</div>
+		<div class = "bt">
+			<button class="return_button" onclick="location.href='/index'">返回</button>
+		</div>
     </div>
 </div>
 <script type="text/javascript" src="../static/script/jquery-3.1.1.min.js"></script>
@@ -118,12 +121,14 @@
     /* page-select */
     .res-content .page-select{
         width:600px;
-        margin:300px auto;
+		height:50px;
+        margin:10px auto;
         text-align: center;
     }
     .res-content .page-select .page{
         display: inline-block;
         width:40px;
+
         height:40px;
         line-height: 40px;
         text-align: center;
@@ -131,11 +136,22 @@
         margin-right:5px;
         font-size:1.6rem;
     }
-    .res-content .page-select .selected,
-    .res-content .page-select .page:hover{
-        background:#77a6fa;
-    }
-    .res-content .page-select .page:hover{
+
+	.res-content .page-select .page:hover{
         cursor:pointer;
     }
+	.res-content.bt{
+		width:600px;
+		height:50px;
+        margin:10px auto;
+	}
+	.res-content .return_button{
+		width:100px;
+        height:40px;
+		border:1px solid #ccc;
+		border-radius:20px;
+        margin: auto;
+        font-size:3.2rem;
+		text-align: center;
+	}
 </style>
