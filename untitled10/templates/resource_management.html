@@ -64,7 +64,7 @@
 			{% if isroot == 'false' %}
 			<form action="/changestate/?page={{page}}" method="post">
 			{% else %}
-			<form action="/del_resource/" method="post">
+			<form action="/del_resource/?page={{page}}" method="post">
 			{% endif %}
 			<table id="reserve_record">
 
@@ -81,7 +81,7 @@
 						<td>{{item.id}}</td>
 						<td>{{item.name}}</td>
 						<td>{{item.state}}</td>
-						<td><input type="checkbox" name="shift" value="{{item.id}}" ></td>
+						<td><input type="checkbox" name="shift" value="{{item.resid}}" ></td>
 					</tr>
 				{% endfor %}
 				</tbody>
