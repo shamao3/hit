@@ -309,6 +309,7 @@ def delresource(request):
                             for item in res:
                                 id = item[0]
                                 sqltemp = sql.format(restxt, id)
+                                cursor.execute(sqltemp)
                         else:
                             print('error ! 没有人拥有这个资源')
 
