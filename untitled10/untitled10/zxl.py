@@ -57,7 +57,7 @@ def getmyRes(page='1',id=None):#分页函数
                 pages[str(i + 1)] = tempgroup#将temp装入字典  key为i+1
             return pages.get(page, '1'), range(1, size + 1)#返回key为page的value和总页面数量数组
         return []
-def cancel_detail(request):
+def cancel_detail(request):#取消预约界面显示
     username = checksession(request)
     if (username == False):
         return redirect('/login')
@@ -65,7 +65,7 @@ def cancel_detail(request):
     a = str(request.session.get('userid', ''))
     result, size = getmyRes(page=page, id=a)#页面数据和总页面数量列表
     return render(request, './cancel_reserve.html', {'username': username, 'size': size, 'resource': result})
-def delete(request):
+def delete(request):#取消预约操作
     username = checksession(request)
     if (username == False):
         return redirect('/login')
