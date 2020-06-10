@@ -27,12 +27,12 @@
 		<h1>添加账户</h1>
 		<div class="wrapper">
 			<div class="w3ls-form">
-				<form action="/person_add/" method="post">
+				<form action="/add_Child" method="post">
 					{%csrf_token%}
-					<label>账户</label>
-					<input type="text" id="userName" name="userName" placeholder="UserName" required/>
 					<label>昵称</label>
-					<input type="text" id="name" name="name" placeholder="Name" required/>
+					<input type="text" id="userName" name="userName" placeholder="Name" required/>
+					<label>账户</label>
+					<input type="text" id="name" name="name" placeholder="UserName" required/>
 					<label>密码</label>
 					<input type="text" id="password" name="password" placeholder="Password" required />
 					<label>申请开始时间</label>
@@ -43,7 +43,11 @@
 				</form>
 			</div>
 		</div>
+
 	</div>
+    <h>
+		{{text2}}
+	</h>
 	<script type="text/javascript" src="../static/script/jquery-3.1.1.min.js"></script>
 	<script type="text/javascript" src="../../static/script/main.js"></script>
 <script>
