@@ -69,12 +69,11 @@
             <tr>
                 <th>{{i.num}}</th>
                 <th>{{i.text}}</th>
-                <th>{{i.is_read}}</th>
-<!--                {% if i.isread == 'true' %}-->
-<!--                <th>已读</th>-->
-<!--                {% else %}-->
-<!--                <th><a href="/haveread/?read=False&id={{i.id}}">未读</a></th>-->
-<!--                {% endif %}-->
+                {% if i.is_read == 'True' %}
+                <th>已读</th>
+                {% else %}
+                <th><a href="/haveread/?read=False&id={{i.id}}">未读</a></th>
+                {% endif %}
             </tr>
             {% endfor %}
             </tbody>

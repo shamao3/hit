@@ -23,7 +23,7 @@ def else_get(request):
             for notice in result:
                 dic['num'] = i
                 dic['text'] = notice[0]
-                dic['is_read'] = notice[1]
+                dic['is_read'] = str(notice[1])
                 dic['id'] = notice[2]
                 res.append(dic.copy())  # res中的数据也发生变化主要原因是dict是一个可变的对象，list在append的时候，只是append了对象的引用，没有append对象的数据。
                 # 修改了对象之后，之前append过的对象也会发生变化。改进：使用copy
@@ -38,8 +38,8 @@ def my_res(request):
     print(a)
 
     with connection.cursor() as cursor:
-        sql='SELECT a.extras,a.startdate,b.location,c.userName from userModel_resource b,userModel_record a,userModel_user c ' \
-            'where b.id=a.resource_id and a.user_id=c.id and a.user_id='+str(a)
+        sql='SELECT a.extras,a.startdate,b.name,c.userName from userModel_resource b,userModel_record a,userModel_user c ' \
+            'where b.id=a.resource_id and a.state="处理中" and a.user_id=c.id and a.user_id='+str(a)
         cursor.execute(sql)
         result = cursor.fetchall()
         size = (len(result) - 1) // 7 + 1
@@ -51,7 +51,7 @@ def my_res(request):
                 dic['num']=i
                 dic['extras']=my_res[0]
                 dic['date']=my_res[1]
-                dic['location'] = my_res[2]
+                dic['location_name'] = my_res[2]
                 dic['userName'] = my_res[3]
                 res.append(dic.copy())#res中的数据也发生变化主要原因是dict是一个可变的对象，list在append的时候，只是append了对象的引用，没有append对象的数据。
                 # 修改了对象之后，之前append过的对象也会发生变化。改进：使用copy
@@ -72,35 +72,41 @@ def my_res(request):
         else : return render(request,'./my_resource.html',{"my_res":[],"size":[]})
 
 def judgeAgree(request):
+    print(1)
     username = checksession(request)
     if (username == False):
         return redirect('/login')
-    if(request.method=='POST'):
-        changeitems=request.POST.getlist('shift',[])
-        isAgree=request.GET.get('agree','')#获取参数
-        location=request.GET.get('name','')
+    isAgree=request.GET.get('agree','')#获取参数
+    location=request.GET.get('name','')
+    sql = ''
        # sqlread = 'select id,isavailable from userModel_resource a ,userModel_record b where b.resource_id'
-        with connection.cursor() as cursor:
-           if(isAgree == True):
-               state = "预约成功"
-           else:
-               state = "预约失败"
-           sql = 'update userModel_record a,userModel_resource b set a.state = "' + str(state) \
-                 + '" where b.location = "' + str(location) + '" and b.id = a.resource_id '
+    with connection.cursor() as cursor:
+       sql = 'SELECT id from userModel_resource where name = "'+ str(location) + '"'
+       print(2)
+       cursor.execute(sql)
+       result = cursor.fetchall()
+       print(result)
+       if(isAgree == "True"):
+            state = "预约成功"
+       else:
+             state = "预约失败"
+       print(state)
+       if (len(result) != 0):
+           sql = 'update userModel_record  set state = "' + str(state) + '" where resource_id = ' + str(result[0][0])
            cursor.execute(sql)
            cursor.close()
-    return redirect('/my_res/')
+    return redirect('/my_resource/')
 
 def haveRead(request):
     username = checksession(request)
     if (username == False):
         return redirect('/login')
-    if (request.method == 'POST'):
-        isRead = request.GET.get('read', '')  # 获取参数
-        idofnotice = request.GET.get('id', '')
-        with connection.cursor() as cursor:
-            if(isRead == False):
-                sql = 'update userModel_othernotice  set state = True where id = '+idofnotice
-            cursor.execute(sql)
-            cursor.close()
+    isRead = request.GET.get('read', '')  # 获取参数
+    idofnotice = request.GET.get('id', '')
+    sql = ''
+    with connection.cursor() as cursor:
+           if(isRead == "False"):
+                sql = 'update userModel_othernotice  set isread = "True" where id = '+idofnotice
+           cursor.execute(sql)
+           cursor.close()
     return redirect('/else_notice/')

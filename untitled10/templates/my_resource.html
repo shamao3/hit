@@ -73,10 +73,10 @@
             <tr>
                 <td>{{i.num}}</td><!--申请id-->
                 <td>{{i.date}}</td><!--项目日期-->
-                <td>{{i.location}}</td><!--申请教室-->
+                <td>{{i.location_name}}</td><!--申请教室-->
                 <td>{{i.extras}}</td><!--理由-->
                 <td>{{i.userName}}</td><!--申请人-->
-                <td><a href="/agree/?name={{i.location}}&agree=True">同意</a>/<a href="/agree/?name={{i.location}}&agree=False">不同意</a></td>
+                <td><a href="/agree/?name={{i.location_name}}&agree=True">同意</a>/<a href="/agree/?name={{i.location}}&agree=False">不同意</a></td>
             </tr>
             {% endfor %}
             </tbody>
