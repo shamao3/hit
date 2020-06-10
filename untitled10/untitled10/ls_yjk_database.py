@@ -1,11 +1,6 @@
 from django.db import connection,models
 from django.http import HttpResponse
 from django.shortcuts import render,redirect
-from django.utils import timezone
-
-import datetime
-
-from datetime import date
 
 
 def add_Child(request):
@@ -46,23 +41,6 @@ def add_Child(request):
 
 
 
-
-
-
-
-    # cursor = connection.cursor()
-    # cursor.execute(
-    #     'Insert into userModel_user (name,userName,password,privilige,startdate,enddate)'
-    #     #'values( "'+username+' + '+name+' + '+password+' + 1 + '+startDate+' + '+endDate+'")')
-    #      'values( "'+str(username)+'" , "'+str(name)+'" , "'+str(password)+'" , "student" , "'+str(startDate)+'" , "'+str(endDate)+'")'
-    #      'Insert into userModel_userrelationship (childuser_id,upperuser_id)' 'values()'
-    #     )
-    #
-    # connection.close
-    # return HttpResponse("添加成功！")
-    # return HttpResponse("userName:" + username + ";name:" + name + ";password:" + password + ";startDate:"
-    #               + startDate + ";endDate:" + endDate) (name,userName,password,privilige,startdate,enddate)
-
 def delete_user(request):
     request.session.clear_expired()
     if request.method == 'POST':
@@ -70,10 +48,6 @@ def delete_user(request):
         userid = request.session.get('userid', '')
     else:
         return HttpResponse("!!!")
-    # cursor = connection.cursor()
-    # cursor.execute('delete  from userModel_user a, userModel_userrelationship b,'
-    #                'userModel_user c where ' 'a.id = b.upperuser_id and b.childuser_id = c.id and c.userName = "'+cancell+'"')
-    # connection.close
     sql = 'SELECT id FROM userModel_user WHERE userName="{}";'
     sql = sql.format(del_userName)
     with connection.cursor() as cursor:
@@ -83,7 +57,7 @@ def delete_user(request):
             del_userID = result[0][0]
             up_id = del_userID
         else:
-            return HttpResponse("该用户不存在")
+            return render(request, "./person_del.html", {"text": "该用户不存在"})
     a = 0
 
     while len(result) != 0:
@@ -98,7 +72,7 @@ def delete_user(request):
                     a = 1
                     break
             else:
-                return HttpResponse("您没有权限注销该用户")
+                return render(request, "./person_del.html", {"text": "您没有权限注销该用户"})
     sql = 'DELETE from userModel_record where user_id={};'
     sql = sql.format(del_userID)
     with connection.cursor() as cursor:
@@ -131,17 +105,3 @@ def delete_user(request):
 
 
 
-
-
-    # with connection.cursor() as cursor:
-    #     sql = 'SELECT c.userName FROM userModel_user a, userModel_userrelationship b,userModel_user c WHERE ' \
-    #         'a.id = b.upperuser_id and b.childuser_id = c.id and c.userName = "'+cancell+'"'
-    #     cursor.execute(sql)
-    #     result = cursor.fetchall
-    # if(result != ''):
-    #     cursor = connection.cursor()
-    #     cursor.execute('delete  from userModel_user where id = "'+userid+'"')
-    #     connection.close
-    #     return HttpResponse("注销成功！")
-    # else:
-    #     return HttpResponse("注销失败！")

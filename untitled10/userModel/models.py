@@ -26,7 +26,7 @@ class ResourceBelonging(models.Model):
 
 class OtherNotice(models.Model):
     text = models.CharField(max_length=200)
-    isread = models.BooleanField(default=False)
+    isread = models.CharField(max_length=20)
     user = models.ForeignKey('User',on_delete=models.CASCADE)
 
 class Record(models.Model):

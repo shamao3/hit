@@ -371,3 +371,14 @@ def addresource(request):
 def resadd(request):
     return render(request,"./add_resource.html",{"usernamealarm":'',"resourcenamealarm":''})
 
+
+def cleanuser():
+    sql = 'select id from userModel_user where enddate< date("now")'
+    with connection.cursor() as cursor:
+        cursor.execute(sql)
+        result = cursor.fetchall()
+        if(len(result)!=0):
+            for item in result:
+                sqldelrecord='delete from userModel_record where user_id = {}'
+                sqldelrecord.format(item[0])
+                cursor.execute(sqldelrecord)
