@@ -76,7 +76,7 @@
                 <td>{{i.location}}</td><!--申请教室-->
                 <td>{{i.extras}}</td><!--理由-->
                 <td>{{i.userName}}</td><!--申请人-->
-                <td><a>同意</a>/<a>不同意</a></td>
+                <td><a href="/agree/?name={{i.location}}&agree=True">同意</a>/<a href="/agree/?name={{i.location}}&agree=False">不同意</a></td>
             </tr>
             {% endfor %}
             </tbody>
@@ -87,7 +87,7 @@
 			{% endfor %}
 		</div>
 		<div class = "bt">
-			<button class="return_button" onclick="location.href='/index'">返回</button>
+			<button class="return_button" onclick="location.href='/notice'">返回</button>
 		</div>
     </div>
 </div>

@@ -69,7 +69,12 @@
             <tr>
                 <th>{{i.num}}</th>
                 <th>{{i.text}}</th>
-                <th>{{i.isread}}</th>
+                <th>{{i.is_read}}</th>
+<!--                {% if i.isread == 'true' %}-->
+<!--                <th>已读</th>-->
+<!--                {% else %}-->
+<!--                <th><a href="/haveread/?read=False&id={{i.id}}">未读</a></th>-->
+<!--                {% endif %}-->
             </tr>
             {% endfor %}
             </tbody>
@@ -80,7 +85,7 @@
           {% endfor %}
         </div>
         <div class="button">
-            <button class="return_button" onclick="location.href='/index'">返回</button>
+            <button class="return_button" onclick="location.href='/notice'">返回</button>
         </div>
 
     </div>

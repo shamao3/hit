@@ -195,7 +195,7 @@ def reversestate(request):
         return redirect('/login')
     if(request.method=='POST'):
         changeitems=request.POST.getlist('shift',[])
-        thispage=request.GET.get('page','')
+        thispage=request.GET.get('page','')#获取参数
         sqlread = 'select id,isavailable from userModel_resource'
         if(len(changeitems)!=0):
             sqlread+=' where id in ('

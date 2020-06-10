@@ -24,7 +24,8 @@ from .staticView import  roomclass, manage, adddel, index, borrowableTable, fill
     cancel_reserver, notice, myApplication, personal_information, my_resource, else_notice
 from .zxl import cancel_detail,detail,delete
 from .ls_yjk_database import add_Child,delete_user
-from .wjjDatabase import else_get,my_res
+from .wjjDatabase import else_get, my_res, judgeAgree, haveRead
+
 urlpatterns = [
     url(r'^$',index),
     url(r'^index$',index),
@@ -67,5 +68,7 @@ urlpatterns = [
     url(r'^myresource/$', resourcemanage),  # 资源管理
     url(r'^changestate/$', reversestate),
     url(r'^cancel/$', cancel_detail),#取消预约
-    url(r'^cancel/delete/$', delete)
+    url(r'^cancel/delete/$', delete),
+    url(r'^agree/$', judgeAgree),
+    url(r'^haveread/$', haveRead),
 ]
