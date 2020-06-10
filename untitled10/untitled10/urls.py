@@ -23,7 +23,7 @@ from .lym_database import getMyApplication, getPersonalInformation
 from .staticView import  roomclass, manage, adddel, index, borrowableTable, fillTable, login, add, dell, \
     cancel_reserver, notice, myApplication, personal_information, my_resource, else_notice
 from .zxl import cancel_detail,detail,delete
-from .ls_database import registered
+from .ls_yjk_database import add_Child,delete_user
 from .wjjDatabase import else_get,my_res
 urlpatterns = [
     url(r'^$',index),
@@ -49,7 +49,8 @@ urlpatterns = [
     url(r'^get_booking_table/$',addrecord),#booking_table界面中POST
     url(r'^add_user$',add_user),#添加账户POST
     url(r'^del_resource/$', delresource),
-
+    url(r'^add_Child$', add_Child),
+    url(r'^delete_user$', delete_user),
     url(r'^searchres/$',searchres),
     url(r'^add_resource/$',resadd),
     url(r'^resadd/$',addresource),
@@ -63,7 +64,6 @@ urlpatterns = [
     url(r'^personal_information/$',getPersonalInformation),#个人信息查看数据获取
     url(r'^else_notice/$',else_get),#消息是否已读获取
     url(r'^my_resource/$',my_res),#我的资源是数据获取
-    url(r'^person_add/$',registered),#注册账户
     url(r'^myresource/$', resourcemanage),  # 资源管理
     url(r'^changestate/$', reversestate),
     url(r'^cancel/$', cancel_detail),#取消预约
