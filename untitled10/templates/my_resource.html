@@ -76,7 +76,7 @@
                 <td>{{i.location_name}}</td><!--申请教室-->
                 <td>{{i.extras}}</td><!--理由-->
                 <td>{{i.userName}}</td><!--申请人-->
-                <td><a href="/agree/?name={{i.location_name}}&agree=True">同意</a>/<a href="/agree/?name={{i.location}}&agree=False">不同意</a></td>
+                <td><a href="/agree/?name={{i.location_name}}&agree=True&num={{i.num}}">同意</a>/<a href="/agree/?name={{i.location}}&agree=False">不同意</a></td>
             </tr>
             {% endfor %}
             </tbody>
