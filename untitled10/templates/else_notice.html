@@ -72,7 +72,7 @@
                 {% if i.is_read == 'True' %}
                 <th>已读</th>
                 {% else %}
-                <th><a href="/haveread/?read=False&id={{i.id}}">未读</a></th>
+                <th><a href="/haveread/?read=False&id={{i.id}}&num={{i.num}}">未读</a></th>
                 {% endif %}
             </tr>
             {% endfor %}
