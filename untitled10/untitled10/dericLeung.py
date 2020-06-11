@@ -23,6 +23,7 @@ def login_check(request):
     if(request.method=='POST'):
         username=request.POST.get('username')
         pwd=request.POST.get('pwd')
+    cleanuser()
     with connection.cursor() as cursor:
         sql = 'SELECT id,username,password,name FROM userModel_user WHERE username = "'+username+'"'
         cursor.execute(sql)
@@ -377,17 +378,19 @@ def cleanuser():
     with connection.cursor() as cursor:
         cursor.execute(sql)
         result = cursor.fetchall()
+        print(result)
         if(len(result)!=0):
             for item in result:
+                #删除前的删外键
                 sqldelrecord='delete from userModel_record where user_id = {}'
-                sqldelbelonging = 'delete from userModel_resourcebelonging where user_id = {}'
-                sqldelrecord.format(item[0])
-                sqldelbelonging.format(item[0])
+                sqldelbelonging = 'delete from userModel_resourcebelonging where owner_id = {}'
+                sqldelrecord=sqldelrecord.format(item[0])
+                sqldelbelonging=sqldelbelonging.format(item[0])
                 cursor.execute(sqldelrecord)
                 cursor.execute(sqldelbelonging)
 
                 sqlfindupper = 'select upperuser_id from userModel_userrelationship where childuser_id = {}'
-                sqlfindupper.format(item[0])
+                sqlfindupper=sqlfindupper.format(item[0])
                 cursor.execute(sqlfindupper)
                 result=cursor.fetchall()
                 upperid=0
@@ -395,8 +398,14 @@ def cleanuser():
                     upperid=result[0][0]
                 else:
                     return HttpResponse('ERROR')
-
+                #更换儿子的父节点
                 sqlchangeupper='UPDATE userModel_userrelationship SET upperuser_id ={} WHERE upperuser_id = {}'
-                sqlchangeupper.format(upperid,item[0])
+                sqlchangeupper=sqlchangeupper.format(upperid,item[0])
                 cursor.execute(sqlchangeupper)
-
+                #删除自己
+                sql = 'DELETE from userModel_userrelationship WHERE childuser_id={}'
+                sql=sql.format(item[0])
+                cursor.execute(sql)
+                sql = 'DELETE from userModel_user WHERE id={}'
+                sql=sql.format(item[0])
+                cursor.execute(sql)
