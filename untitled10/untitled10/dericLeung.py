@@ -380,5 +380,23 @@ def cleanuser():
         if(len(result)!=0):
             for item in result:
                 sqldelrecord='delete from userModel_record where user_id = {}'
+                sqldelbelonging = 'delete from userModel_resourcebelonging where user_id = {}'
                 sqldelrecord.format(item[0])
+                sqldelbelonging.format(item[0])
                 cursor.execute(sqldelrecord)
+                cursor.execute(sqldelbelonging)
+
+                sqlfindupper = 'select upperuser_id from userModel_userrelationship where childuser_id = {}'
+                sqlfindupper.format(item[0])
+                cursor.execute(sqlfindupper)
+                result=cursor.fetchall()
+                upperid=0
+                if(len(result)!=0):
+                    upperid=result[0][0]
+                else:
+                    return HttpResponse('ERROR')
+
+                sqlchangeupper='UPDATE userModel_userrelationship SET upperuser_id ={} WHERE upperuser_id = {}'
+                sqlchangeupper.format(upperid,item[0])
+                cursor.execute(sqlchangeupper)
+
