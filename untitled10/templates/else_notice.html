@@ -83,10 +83,9 @@
             <div class="page" id="page1"><a href="/else_notice/?page={{item}}"> {{item}} </a></div>
           {% endfor %}
         </div>
-        <div class="button">
-            <button class="return_button" onclick="location.href='/notice'">返回</button>
-        </div>
-
+ 		<div class = "bt">
+			<button class="return_button" onclick="location.href='/notice'">返回</button>
+		</div>
     </div>
 </div>
 
@@ -132,19 +131,24 @@
         margin-right:5px;
         font-size:1.6rem;
     }
-    .res-content .page-select .page selected,
-    .res-content .page-select .page:hover{
+    .else-content .page-select .page selected,
+    .else-content .page-select .page:hover{
         background:#77a6fa;
     }
-    .res-content .page-select .page:hover{
+    .else-content .page-select .page:hover{
         cursor:pointer;
     }
-    .res-content .return_button{
+  	.else-content.bt{
+		width:600px;
+		height:50px;
+        margin:10px auto;
+	}
+	.else-content .return_button{
 		width:100px;
         height:40px;
 		border:1px solid #ccc;
 		border-radius:20px;
-        margin-right:250px;
+        margin-left:450px;
         font-size:3.2rem;
 		text-align: center;
 	}
