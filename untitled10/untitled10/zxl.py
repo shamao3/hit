@@ -64,6 +64,9 @@ def cancel_detail(request):#取消预约界面显示
     page = request.GET.get('page', '1')
     a = str(request.session.get('userid', ''))
     result, size = getmyRes(page=page, id=a)#页面数据和总页面数量列表
+    if(result=='1'):
+        result=None
+        size=range(1,2)
     return render(request, './cancel_reserve.html', {'username': username, 'size': size, 'resource': result})
 def delete(request):#取消预约操作
     username = checksession(request)
